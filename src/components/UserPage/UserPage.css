@@ -1,0 +1,27 @@
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 30%;
+}
+
+.page-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50%;
+}
+
+.profPic {
+    border-radius: 50%;
+    width: 120px;
+    margin-left: 27%;
+    margin-bottom: 15px;
+}
+
+.btn {
+    text-align: center;
+    text-decoration: none;
+    padding-top: 10px;
+    font-size: 14px;
+}

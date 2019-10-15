@@ -1,17 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import './UserPage.css';
+import TestImage from './testprofpic.png';
+import { Link } from 'react-router-dom';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
 const UserPage = (props) => (
-  <div>
+  <div className="page-body">
     <h1 id="welcome">
       Welcome, { props.user.username }!
     </h1>
-    <p>Your ID is: {props.user.id}</p>
+    <img src={TestImage} className="profPic"></img>
+    <div className="buttons">
+      <Link to="/MyProfile" className="btn">My Profile</Link>
+      <Link to="/MyGroups" className="btn">My Groups</Link>
+    {/* <button className="btn" onClick={(event) => {this.props.history.push('/MyProfile')}}>My Profile</button>
+      <button className="btn" onClick={(event) => {this.props.history.push('/MyGroups')}}>My Groups</button> */}
     <LogOutButton className="log-in" />
+    </div>
   </div>
 );
 

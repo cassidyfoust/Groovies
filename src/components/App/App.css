@@ -1,6 +1,8 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0px;
+    display: flex;
+    background-color: #dbd5d5;
+    justify-content: center;
 }
 
 .alert {
@@ -10,11 +12,10 @@ body {
 
 form {
     background-color: #dbd5d5;
-    width: 30%;
+    width: 100%;
+    text-align: center;
+    padding-top: 50%;
     height: 250px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 2px;
 }
 
 input {
@@ -22,14 +23,15 @@ input {
     margin-bottom: 10px;
 }
 
-.log-in, .log-out, .register {
+.log-in, .log-out, .register, .btn {
   background-color: #00acb0;
   border-radius: 4px;
   color: #f8f8f8;
-  min-height: 50px;
-  min-width: 100px;
+  min-height: 30px;
+  width: 100px;
   outline:0;
   cursor: pointer;
+  margin: 3px;
 }
 
 .log-in:hover, .log-out:hover, .register:hover {
