@@ -41,9 +41,9 @@ const ProfilePage = () => (
         <Link to="/home" className="backBtn">Back</Link>
         </div>
         <h1>
-            Your Preferences:
+            My Preferences:
     </h1>
-    <p>You Like:</p>
+    <p>I Like:</p>
         <div className="prefs">
         <MyCard>
             Genre One
@@ -69,7 +69,7 @@ const ProfilePage = () => (
                 </NewIconBtn>
             </MyCard>
         </div>
-    <p>You Dislike:</p>
+    <p>I Dislike:</p>
         <div className="prefs">
             <MyCard>
                 Genre One
@@ -95,7 +95,7 @@ const ProfilePage = () => (
                 </NewIconBtn>
             </MyCard>
         </div>
-    <p>You Watched:
+    <p>I Watched:
         Someday there will be a carousel here
     </p>
     <div>
