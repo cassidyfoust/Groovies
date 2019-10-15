@@ -1,0 +1,5 @@
+.prefs {
+  display: flex;
+  padding: 5px;
+  flex-wrap: wrap;
+}
