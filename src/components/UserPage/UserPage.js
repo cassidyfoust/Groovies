@@ -15,12 +15,10 @@ const UserPage = (props) => (
     </h1>
     <img src={TestImage} className="profPic"></img>
     <div className="buttons">
-      <Link to="/MyProfile" className="btn">My Profile</Link>
-      <Link to="/MyGroups" className="btn">My Groups</Link>
-    {/* <button className="btn" onClick={(event) => {this.props.history.push('/MyProfile')}}>My Profile</button>
-      <button className="btn" onClick={(event) => {this.props.history.push('/MyGroups')}}>My Groups</button> */}
-    <LogOutButton className="log-in" />
+      <Link to="/MyProfile" className="newBtn">My Profile</Link>
+      <Link to="/MyGroups" className="newBtn">My Groups</Link>
     </div>
+      <LogOutButton className="log-in" />
   </div>
 );
 

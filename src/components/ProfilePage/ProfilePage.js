@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { flexbox } from '@material-ui/system';
 import AddIcon from '@material-ui/icons/Add';
+import { Link } from 'react-router-dom';
 
 const MyCard = styled(Card)({
     // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -36,6 +37,9 @@ const NewIconBtn = styled(IconButton)({
 
 const ProfilePage = () => (
     <div>
+        <div className="back">
+        <Link to="/home" className="backBtn">Back</Link>
+        </div>
         <h1>
             Your Preferences:
     </h1>
@@ -91,8 +95,12 @@ const ProfilePage = () => (
                 </NewIconBtn>
             </MyCard>
         </div>
-    <p>You Watched:</p>
-    Someday there will be a carousel here
+    <p>You Watched:
+        Someday there will be a carousel here
+    </p>
+    <div>
+    <Link to="/AddUserMovie" className="addMovieBtn">Add Movie</Link>
+    </div>
     </div>
 );
 

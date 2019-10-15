@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 30%;
 }
 
 .page-body {
@@ -19,9 +18,19 @@
     margin-bottom: 15px;
 }
 
-.btn {
-    text-align: center;
-    text-decoration: none;
-    padding-top: 10px;
-    font-size: 14px;
+.newBtn {
+  display: flex;
+  margin-bottom: 5px;
+  background-color: #00acb0;
+  border-radius: 4px;
+  padding: 10px;
+  width: 77px;
+  color: #f8f8f8;
+  height: 18px;
+  margin-left: 25px;
+  outline:0;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
 }
