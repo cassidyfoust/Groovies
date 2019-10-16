@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import MyProfilePage from '../ProfilePage/ProfilePage';
 import MyGroupsPage from '../MyGroups/MyGroups.js';
 import AddMyMovie from '../AddMyMovie/AddMyMovie.js';
+import CreateGroup from '../CreateGroup/CreateGroup.js';
 
 import './App.css';
 
@@ -71,6 +72,11 @@ class App extends Component {
               exact
               path="/AddUserMovie"
               component={AddMyMovie}
+            />
+            <ProtectedRoute
+              exact
+              path="/CreateGroup"
+              component={CreateGroup}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
