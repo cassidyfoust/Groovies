@@ -4,7 +4,13 @@ import { Link } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import '../CreateGroup/CreateGroup'
+import '../CreateGroup/CreateGroup';
+import { connect } from 'react-redux';
+
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
+
 
 const MyList = styled(List)({
     border: 1,
@@ -29,6 +35,10 @@ const MyListItem = styled(ListItem)({
 
 class MyGroupsPage extends Component{ 
 
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_GROUPS', payload: this.props.reduxState.user.id });
+    }
+
     handleClick = () => {
         console.log("list item clicked");
         this.props.history.push("/GroupDetails")
@@ -48,19 +58,18 @@ class MyGroupsPage extends Component{
             <Link to="/CreateGroup" className="newBtn">Create New Group</Link>
         </div>
         <MyList>
-            <MyListItem onClick={this.handleClick}>
-                Group 1*
-            </MyListItem>
-            <MyListItem onClick={this.handleClick}>
-                Group 2
-            </MyListItem>
-            <MyListItem onClick={this.handleClick}>
-                Group 3
-            </MyListItem>
-        </MyList>
+            {this.props.reduxState.groups.map((group) => {
+                            return (
+                                <> <MyListItem onClick={this.handleClick}>
+                                    {group.group_name}
+                                    </MyListItem>
+                                </>
+                            )
+                        })}
+            </MyList>
         </div>
         An asterisk indicates you are the owner of that group.
     </div>
 )}
  }
-export default MyGroupsPage;
+export default connect(mapStateToProps)(MyGroupsPage);
