@@ -57,7 +57,9 @@ class ProfilePage extends Component {
         likesIsOpen: false,
         dislikesIsOpen: false,
         genreLikeName: '',
-        genreLikeId: 0
+        genreLikeId: 0,
+        genreDislikeName: '',
+        genreDislikeId: 0
     }
 
     componentDidMount() {
@@ -231,8 +233,150 @@ class ProfilePage extends Component {
         }
     }
 
+    handleDislikeChange = (event) => {
+        if (event.target.value === 'Action') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Action',
+                genreDislikeId: 1
+            })
+        }
+        else if (event.target.value === 'Adventure') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Adventure',
+                genreDislikeId: 2
+            })
+        }
+        else if (event.target.value === 'Animation') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Animation',
+                genreDislikeId: 3
+            })
+        }
+        else if (event.target.value === 'Comedy') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Comedy',
+                genreDislikeId: 4
+            })
+        }
+        else if (event.target.value === 'Crime') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Crime',
+                genreDislikeId: 5
+            })
+        }
+        else if (event.target.value === 'Documentary') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Documentary',
+                genreDislikeId: 6
+            })
+        }
+        else if (event.target.value === 'Drama') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Drama',
+                genreDislikeId: 7
+            })
+        }
+        else if (event.target.value === 'Family') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Family',
+                genreDislikeId: 8
+            })
+        }
+        else if (event.target.value === 'Fantasy') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Fantasy',
+                genreDislikeId: 9
+            })
+        }
+        else if (event.target.value === 'History') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'History',
+                genreDislikeId: 10
+            })
+        }
+        else if (event.target.value === 'Horror') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Horror',
+                genreDislikeId: 11
+            })
+        }
+        else if (event.target.value === 'Music') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Music',
+                genreDislikeId: 12
+            })
+        }
+        else if (event.target.value === 'Mystery') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Mystery',
+                genreDislikeId: 13
+            })
+        }
+        else if (event.target.value === 'Romance') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Romance',
+                genreDislikeId: 14
+            })
+        }
+        else if (event.target.value === 'Science Fiction') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Science Fiction',
+                genreDislikeId: 15
+            })
+        }
+        else if (event.target.value === 'TV Movie') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'TV Movie',
+                genreDislikeId: 16
+            })
+        }
+        else if (event.target.value === 'Thriller') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Thriller',
+                genreDislikeId: 17
+            })
+        }
+        else if (event.target.value === 'War') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'War',
+                genreDislikeId: 18
+            })
+        }
+        else if (event.target.value === 'Western') {
+            this.setState({
+                ...this.state,
+                genreDislikeName: 'Western',
+                genreDislikeId: 19
+            })
+        }
+    }
+
     handleAddLikes = () => {
         console.log('adding genre to Likes:', this.state.genreLikeName);
+        this.props.dispatch({ type: 'ADD_USER_LIKES', payload: {user_id: this.props.reduxState.user.id, genre_id: this.state.genreLikeId}})
+    }
+
+    handleAddDislikes = () => {
+        console.log('adding genre to Dislikes:', this.state.genreDislikeName);
+        this.props.dispatch({ type: 'ADD_USER_DISLIKES', payload: { user_id: this.props.reduxState.user.id, genre_id: this.state.genreDislikeId } })
     }
 
     render() {
