@@ -20,6 +20,9 @@ import MyProfilePage from '../ProfilePage/ProfilePage';
 import MyGroupsPage from '../MyGroups/MyGroups.js';
 import AddMyMovie from '../AddMyMovie/AddMyMovie.js';
 import CreateGroup from '../CreateGroup/CreateGroup.js';
+import GroupDetailPage from '../GroupDetailPage/GroupDetailPage';
+import GroupPreferences from '../GroupPreferences/GroupPreferences';
+import AddGroupMovie from '../AddGroupMovie/AddGroupMovie';
 
 import './App.css';
 
@@ -77,6 +80,21 @@ class App extends Component {
               exact
               path="/CreateGroup"
               component={CreateGroup}
+            />
+            <ProtectedRoute
+              exact
+              path="/GroupDetails"
+              component={GroupDetailPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/GroupPreferences"
+              component={GroupPreferences}
+            />
+            <ProtectedRoute
+              exact
+              path="/AddGroupMovie"
+              component={AddGroupMovie}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

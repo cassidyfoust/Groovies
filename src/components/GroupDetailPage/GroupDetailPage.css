@@ -1,0 +1,42 @@
+.leaveBtn {
+  background-color: #00acb0;
+  border-radius: 4px;
+  color: #f8f8f8;
+  height: 40px;
+  margin-top: 20px;
+  margin-left: 5px;
+  width: 100px;
+  outline:0;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  float: right;
+}
+
+.pics {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.groupPics {
+    border-radius: 50%;
+    width: 70px;
+    margin: 5px;
+}
+
+.modal-btn {
+  display: flex;
+  background-color: #00acb0;
+  border-radius: 7px;
+  margin: 1px;
+  padding: 10px;
+  width: 100%;
+  color: #f8f8f8;
+  height: 45px;
+  outline:0;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+}

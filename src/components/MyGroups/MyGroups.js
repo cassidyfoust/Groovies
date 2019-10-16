@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './MyGroups.css';
 import { Link } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
@@ -27,7 +27,15 @@ const MyListItem = styled(ListItem)({
     textAlign: "center"
 });
 
-const MyGroupsPage = () => (
+class MyGroupsPage extends Component{ 
+
+    handleClick = () => {
+        console.log("list item clicked");
+        this.props.history.push("/GroupDetails")
+    }
+
+    render() {
+        return (
     <div>
         <div className="back">
             <Link to="/home" className="backBtn">Back</Link>
@@ -40,19 +48,19 @@ const MyGroupsPage = () => (
             <Link to="/CreateGroup" className="newBtn">Create New Group</Link>
         </div>
         <MyList>
-            <MyListItem>
+            <MyListItem onClick={this.handleClick}>
                 Group 1*
             </MyListItem>
-            <MyListItem>
-                    Group 2
+            <MyListItem onClick={this.handleClick}>
+                Group 2
             </MyListItem>
-            <MyListItem>
-                    Group 3
+            <MyListItem onClick={this.handleClick}>
+                Group 3
             </MyListItem>
         </MyList>
         </div>
         An asterisk indicates you are the owner of that group.
     </div>
-);
-
+)}
+ }
 export default MyGroupsPage;
