@@ -54,7 +54,8 @@ const NewIconBtn = styled(IconButton)({
 class ProfilePage extends Component {
 
     state = {
-        isOpen: false,
+        likesIsOpen: false,
+        dislikesIsOpen: false,
         genreLikeName: '',
         genreLikeId: 0
     }
@@ -68,17 +69,30 @@ class ProfilePage extends Component {
         this.props.dispatch({type: 'DELETE_USER_GENRE', payload: {genre: genreId, id: this.props.reduxState.user.id}})
     }
 
-    handleOpen = () => {
-        console.log('should theoretically open modal')
+    handleLikesOpen = () => {
        this.setState({...this.state,
-                isOpen: true
+           likesIsOpen: true
             })
     }
 
-    handleClose = () => {
+    handleDislikesOpen = () => {
         this.setState({
             ...this.state,
-            isOpen: false
+            dislikesIsOpen: true
+        })
+    }
+
+    handleLikesClose = () => {
+        this.setState({
+            ...this.state,
+            likesIsOpen: false
+        })
+    }
+
+    handleDislikesClose = () => {
+        this.setState({
+            ...this.state,
+            dislikesIsOpen: false
         })
     }
 
@@ -247,7 +261,7 @@ class ProfilePage extends Component {
                     )}
                     <MyCard>
                         <NewIconBtn>
-                            <AddIcon onClick={this.handleOpen}/>
+                            <AddIcon onClick={this.handleLikesOpen}/>
                         </NewIconBtn>
                     </MyCard>
         </div>
@@ -267,7 +281,7 @@ class ProfilePage extends Component {
                     }
                     )}
             <MyCard>
-                            <NewIconBtn onClick={this.handleOpen}>
+                            <NewIconBtn onClick={this.handleDislikesOpen}>
                     <AddIcon/>
                 </NewIconBtn>
             </MyCard>
@@ -283,8 +297,8 @@ class ProfilePage extends Component {
             <MyModal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
-                open={this.state.isOpen}
-                onClose={this.handleClose}
+                open={this.state.likesIsOpen}
+                onClose={this.handleLikesClose}
                 closeAfterTransition
                 BackdropComponent={Backdrop}
                 BackdropProps={{
@@ -355,9 +369,87 @@ class ProfilePage extends Component {
                             </option>
                         </select>
                         <button onClick={this.handleAddLikes}>Add</button>
-                        <button onClick={this.handleClose}>Cancel</button>
+                        <button onClick={this.handleLikesClose}>Cancel</button>
                     </div>
             </MyModal>
+                <MyModal
+                    aria-labelledby="transition-modal-title"
+                    aria-describedby="transition-modal-description"
+                    open={this.state.dislikesIsOpen}
+                    onClose={this.handleDislikeClose}
+                    closeAfterTransition
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                        timeout: 500,
+                    }}
+                >
+                    <div>
+                        <h2>Add a genre to your dislikes:</h2>
+                        <select onChange={this.handleDislikeChange}>
+                            <option>
+                            </option>
+                            <option>
+                                Action
+                            </option>
+                            <option>
+                                Adventure
+                            </option>
+                            <option>
+                                Animation
+                            </option>
+                            <option>
+                                Comedy
+                            </option>
+                            <option>
+                                Crime
+                            </option>
+                            <option>
+                                Documentary
+                            </option>
+                            <option>
+                                Drama
+                            </option>
+                            <option>
+                                Family
+                            </option>
+                            <option>
+                                Fantasy
+                            </option>
+                            <option>
+                                History
+                            </option>
+                            <option>
+                                Horror
+                            </option>
+                            <option>
+                                Music
+                            </option>
+                            <option>
+                                Mystery
+                            </option>
+                            <option>
+                                Romance
+                            </option>
+                            <option>
+                                Science Fiction
+                            </option>
+                            <option>
+                                TV Movie
+                            </option>
+                            <option>
+                                Thriller
+                            </option>
+                            <option>
+                                War
+                            </option>
+                            <option>
+                                Western
+                            </option>
+                        </select>
+                        <button onClick={this.handleAddDislikes}>Add</button>
+                        <button onClick={this.handleDislikesClose}>Cancel</button>
+                    </div>
+                </MyModal>
             </>
 
 );
