@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './ProfilePage.css';
 import { styled } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -7,6 +7,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { flexbox } from '@material-ui/system';
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
+
 
 const MyCard = styled(Card)({
     // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -35,8 +41,15 @@ const NewIconBtn = styled(IconButton)({
     margin: 0
 })
 
-const ProfilePage = () => (
-    <div>
+class ProfilePage extends Component {
+
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_USER_GENRES', payload: this.props.reduxState.user.id });
+    }
+
+    render() {
+        return (
+            <div>
         <div className="back">
         <Link to="/home" className="backBtn">Back</Link>
         </div>
@@ -45,50 +58,39 @@ const ProfilePage = () => (
     </h1>
     <p>I Like:</p>
         <div className="prefs">
-        <MyCard>
-            Genre One
-                <NewIconBtn>
-                    <MyDelete/>
-                </NewIconBtn>
-        </MyCard>
-        <MyCard>
-            Genre Two
-                <NewIconBtn>
-                    <MyDelete />
-                </NewIconBtn>
-        </MyCard>
-            <MyCard>
-                Genre Three
-                <NewIconBtn>
-                    <MyDelete />
-                </NewIconBtn>
-            </MyCard>
-            <MyCard>
-                <NewIconBtn>
-                    <AddIcon />
-                </NewIconBtn>
-            </MyCard>
+                    {this.props.reduxState.userGenres.map((genre) => {
+                        if(genre.like === true){
+                        return (
+                            <MyCard>
+                                ⁠{genre.genre_name}
+                                <NewIconBtn>
+                                    <MyDelete />
+                                </NewIconBtn>
+                            </MyCard>
+                        )}
+                    }
+                    )}
+                    <MyCard>
+                        <NewIconBtn>
+                            <AddIcon />
+                        </NewIconBtn>
+                    </MyCard>
         </div>
     <p>I Dislike:</p>
         <div className="prefs">
-            <MyCard>
-                Genre One
-                <NewIconBtn>
-                    <MyDelete />
-                </NewIconBtn>
-            </MyCard>
-            <MyCard>
-                Genre Two
-                <NewIconBtn>
-                    <MyDelete/>
-                </NewIconBtn>
-            </MyCard>
-            <MyCard>
-                Genre Three
-                <NewIconBtn>
-                    <MyDelete />
-                </NewIconBtn>
-            </MyCard>
+                    {this.props.reduxState.userGenres.map((genre) => {
+                        if (genre.like === false) {
+                            return (
+                                <MyCard>
+                                    ⁠{genre.genre_name}
+                                    <NewIconBtn>
+                                        <MyDelete />
+                                    </NewIconBtn>
+                                </MyCard>
+                            )
+                        }
+                    }
+                    )}
             <MyCard>
                 <NewIconBtn>
                     <AddIcon/>
@@ -103,5 +105,7 @@ const ProfilePage = () => (
     </div>
     </div>
 );
+        }
+    }
 
-export default ProfilePage;
+export default connect(mapStateToProps)(ProfilePage);
