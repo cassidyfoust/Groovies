@@ -118,3 +118,4 @@ Customize this ReadMe and the code comments in this project to read less like a 
 ## Cass To-Dos:
 - Clean up CSS codes
 - Styling
+- Add in code that prevents users from adding duplicate likes/dislikes

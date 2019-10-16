@@ -8,11 +8,21 @@ import { flexbox } from '@material-ui/system';
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
 const mapStateToProps = reduxState => ({
     reduxState,
 });
 
+const MyModal = styled(Modal)({
+    position: 'relative',
+    width: "30%",
+    backgroundColor: '#ffffff',
+    color: '#000000',
+    border: '2px solid #000'
+})
 
 const MyCard = styled(Card)({
     // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -43,6 +53,12 @@ const NewIconBtn = styled(IconButton)({
 
 class ProfilePage extends Component {
 
+    state = {
+        isOpen: false,
+        genreLikeName: '',
+        genreLikeId: 0
+    }
+
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_USER_GENRES', payload: this.props.reduxState.user.id });
     }
@@ -52,8 +68,162 @@ class ProfilePage extends Component {
         this.props.dispatch({type: 'DELETE_USER_GENRE', payload: {genre: genreId, id: this.props.reduxState.user.id}})
     }
 
+    handleOpen = () => {
+        console.log('should theoretically open modal')
+       this.setState({...this.state,
+                isOpen: true
+            })
+    }
+
+    handleClose = () => {
+        this.setState({
+            ...this.state,
+            isOpen: false
+        })
+    }
+
+    handleLikeChange = (event) => {
+        if (event.target.value === 'Action') {
+            this.setState({...this.state,
+                genreLikeName: 'Action',
+                genreLikeId: 1
+            })
+        }
+        else if (event.target.value === 'Adventure') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Adventure',
+                genreLikeId: 2
+            })
+        }
+        else if (event.target.value === 'Animation') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Animation',
+                genreLikeId: 3
+            })
+        }
+        else if (event.target.value === 'Comedy') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Comedy',
+                genreLikeId: 4
+            })
+        }
+        else if (event.target.value === 'Crime') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Crime',
+                genreLikeId: 5
+            })
+        }
+        else if (event.target.value === 'Documentary') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Documentary',
+                genreLikeId: 6
+            })
+        }
+        else if (event.target.value === 'Drama') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Drama',
+                genreLikeId: 7
+            })
+        }
+        else if (event.target.value === 'Family') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Family',
+                genreLikeId: 8
+            })
+        }
+        else if (event.target.value === 'Fantasy') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Fantasy',
+                genreLikeId: 9
+            })
+        }
+        else if (event.target.value === 'History') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'History',
+                genreLikeId: 10
+            })
+        }
+        else if (event.target.value === 'Horror') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Horror',
+                genreLikeId: 11
+            })
+        }
+        else if (event.target.value === 'Music') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Music',
+                genreLikeId: 12
+            })
+        }
+        else if (event.target.value === 'Mystery') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Mystery',
+                genreLikeId: 13
+            })
+        }
+        else if (event.target.value === 'Romance') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Romance',
+                genreLikeId: 14
+            })
+        }
+        else if (event.target.value === 'Science Fiction') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Science Fiction',
+                genreLikeId: 15
+            })
+        }
+        else if (event.target.value === 'TV Movie') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'TV Movie',
+                genreLikeId: 16
+            })
+        }
+        else if (event.target.value === 'Thriller') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Thriller',
+                genreLikeId: 17
+            })
+        }
+        else if (event.target.value === 'War') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'War',
+                genreLikeId: 18
+            })
+        }
+        else if (event.target.value === 'Western') {
+            this.setState({
+                ...this.state,
+                genreLikeName: 'Western',
+                genreLikeId: 19
+            })
+        }
+    }
+
+    handleAddLikes = () => {
+        console.log('adding genre to Likes:', this.state.genreLikeName);
+    }
+
     render() {
         return (
+            <>
             <div>
         <div className="back">
         <Link to="/home" className="backBtn">Back</Link>
@@ -77,7 +247,7 @@ class ProfilePage extends Component {
                     )}
                     <MyCard>
                         <NewIconBtn>
-                            <AddIcon />
+                            <AddIcon onClick={this.handleOpen}/>
                         </NewIconBtn>
                     </MyCard>
         </div>
@@ -97,7 +267,7 @@ class ProfilePage extends Component {
                     }
                     )}
             <MyCard>
-                <NewIconBtn>
+                            <NewIconBtn onClick={this.handleOpen}>
                     <AddIcon/>
                 </NewIconBtn>
             </MyCard>
@@ -109,6 +279,87 @@ class ProfilePage extends Component {
     <Link to="/AddUserMovie" className="addMovieBtn">Add Movie</Link>
     </div>
     </div>
+
+            <MyModal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                open={this.state.isOpen}
+                onClose={this.handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                    <div>
+                        <h2>Add a genre to your likes:</h2>
+                        <select onChange={this.handleLikeChange}>
+                            <option>
+                            </option>
+                            <option>
+                                Action
+                            </option>
+                            <option>
+                                Adventure
+                            </option>
+                            <option>
+                                Animation
+                            </option>
+                            <option>
+                                Comedy
+                            </option>
+                            <option>
+                                Crime
+                            </option>
+                            <option>
+                                Documentary
+                            </option>
+                            <option>
+                                Drama
+                            </option>
+                            <option>
+                                Family
+                            </option>
+                            <option>
+                                Fantasy
+                            </option>
+                            <option>
+                                History
+                            </option>
+                            <option>
+                                Horror
+                            </option>
+                            <option>
+                                Music
+                            </option>
+                            <option>
+                                Mystery
+                            </option>
+                            <option>
+                                Romance
+                            </option>
+                            <option>
+                                Science Fiction
+                            </option>
+                            <option>
+                                TV Movie
+                            </option>
+                            <option>
+                                Thriller
+                            </option>
+                            <option>
+                                War
+                            </option>
+                            <option>
+                                Western
+                            </option>
+                        </select>
+                        <button onClick={this.handleAddLikes}>Add</button>
+                        <button onClick={this.handleClose}>Cancel</button>
+                    </div>
+            </MyModal>
+            </>
+
 );
         }
     }
