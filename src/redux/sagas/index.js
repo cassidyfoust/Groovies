@@ -4,6 +4,7 @@ import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
 import getGroups from './groupsSaga';
 import getUserGenres from './userGenresSaga';
+import deleteUserGenre from './deleteUserGenreSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -15,6 +16,7 @@ import getUserGenres from './userGenresSaga';
 export default function* rootSaga() {
   yield takeEvery ('FETCH_GROUPS', getGroups);
   yield takeEvery ('FETCH_USER_GENRES', getUserGenres);
+  yield takeEvery ('DELETE_USER_GENRE', deleteUserGenre);
   yield all([
     loginSaga(),
     registrationSaga(),

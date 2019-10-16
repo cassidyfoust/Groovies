@@ -47,6 +47,11 @@ class ProfilePage extends Component {
         this.props.dispatch({ type: 'FETCH_USER_GENRES', payload: this.props.reduxState.user.id });
     }
 
+    handleDelete = (genreId) => {
+        console.log('deleting:', genreId);
+        this.props.dispatch({type: 'DELETE_USER_GENRE', payload: {genre: genreId, id: this.props.reduxState.user.id}})
+    }
+
     render() {
         return (
             <div>
@@ -63,8 +68,8 @@ class ProfilePage extends Component {
                         return (
                             <MyCard>
                                 ⁠{genre.genre_name}
-                                <NewIconBtn>
-                                    <MyDelete />
+                                <NewIconBtn onClick={(event) => { this.handleDelete(genre.genre_id) }} >
+                                    <MyDelete/>
                                 </NewIconBtn>
                             </MyCard>
                         )}
@@ -83,8 +88,8 @@ class ProfilePage extends Component {
                             return (
                                 <MyCard>
                                     ⁠{genre.genre_name}
-                                    <NewIconBtn>
-                                        <MyDelete />
+                                    <NewIconBtn onClick={(event) => { this.handleDelete(genre.genre_id) }} >
+                                        <MyDelete/>
                                     </NewIconBtn>
                                 </MyCard>
                             )
