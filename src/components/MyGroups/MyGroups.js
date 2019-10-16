@@ -41,7 +41,7 @@ const MyGroupsPage = () => (
         </div>
         <MyList>
             <MyListItem>
-                Group 1
+                Group 1*
             </MyListItem>
             <MyListItem>
                     Group 2
@@ -51,6 +51,7 @@ const MyGroupsPage = () => (
             </MyListItem>
         </MyList>
         </div>
+        An asterisk indicates you are the owner of that group.
     </div>
 );
 

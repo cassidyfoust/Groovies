@@ -2,63 +2,51 @@ import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
+import DeleteIcon from '@material-ui/icons/Delete';
 import './CreateGroup.css';
 import { Link } from 'react-router-dom';
+import { styled } from '@material-ui/core/styles';
+
+const Searchbar = styled(TextField)({
+    height: 20,
+    padding: 15,
+    margin: 5
+})
 
 const CreateGroup = () => (
     <div>
         <h1>
-            Add Movie:
+            Create New Group:
             </h1>
+            <div className="group-name">
+        <h3>Group Name:</h3>
+        <Searchbar
+            id="outlined-name"
+            placeholder="Enter a name"
+            // onChange={handleChange('name')}
+            margin="normal"
+            variant="outlined"></Searchbar>
+        </div>
+        <h3>Add Members:</h3>
         <div className="searchbar">
-            <TextField
+            <Searchbar
                 id="outlined-name"
-                placeholder="Search by movie title"
+                placeholder="Search by username"
                 // onChange={handleChange('name')}
                 margin="normal"
-                variant="outlined"></TextField>
+                variant="outlined"></Searchbar>
             <IconButton aria-label="search">
                 <SearchIcon />
             </IconButton>
         </div>
-        <h3>Movie Title</h3>
-        <p>Description: lorem ipsum blah blah blah</p>
-        <h3>What did you like about this film?</h3>
-        <div className="genreUpdate"><b>Add Genre:</b>
-            <div><br></br></div>
-            <div className="select-wrapper">
-                <select className="select-css">
-                    <option>
-                        None
-                         </option>
-                    <option>
-                        Example Genre
-                        </option>
-                    <option>
-                        Example Genre 2
-                        </option>
-                </select>
-            </div>
-        </div>
-        <h3>What did you dislike about this film?</h3>
-        <div className="genreUpdate"><b>Add Genre:</b>
-            <div><br></br></div>
-            <div className="select-wrapper">
-                <select className="select-css">
-                    <option>
-                        None
-                         </option>
-                    <option>
-                        Example Genre
-                        </option>
-                    <option>
-                        Example Genre 2
-                        </option>
-                </select>
-            </div>
-        </div>
+        <ul>
+            <li>Cass <IconButton><DeleteIcon /></IconButton></li>
+            <li>Pat <IconButton><DeleteIcon /></IconButton></li>
+            <li>Emma <IconButton><DeleteIcon /></IconButton></li>
+            <li>Lumi <IconButton><DeleteIcon /></IconButton></li>
+        </ul>
         <div className="buttons">
-            <button className="addMovieBtn">Add Movie</button><Link to="/MyProfile" className="addMovieBtn">Cancel</Link>
+            <button className="createGroupBtn">Create Group</button><Link to="/MyGroups" className="createGroupBtn">Cancel</Link>
         </div>
     </div>
 );
