@@ -83,7 +83,7 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/GroupDetails"
+              path="/GroupDetails/:id"
               component={GroupDetailPage}
             />
             <ProtectedRoute

@@ -35,6 +35,10 @@ const MyListItem = styled(ListItem)({
 
 class GroupDetailPage extends Component {
 
+    componentDidMount() {
+        this.props.dispatch({ type: 'SELECT_GROUP', payload: this.props.match.params.id });
+    }
+
     groupPrefs = () => {
         this.props.history.push("/GroupPreferences")
     }

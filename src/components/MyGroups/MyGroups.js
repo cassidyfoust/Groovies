@@ -41,8 +41,7 @@ class MyGroupsPage extends Component{
 
     handleClick = (groupId) => {
         console.log("list item clicked", groupId);
-        this.props.dispatch({type: 'SELECT_GROUP', payload: groupId})
-        this.props.history.push("/GroupDetails")
+        this.props.history.push(`/GroupDetails/${groupId}`)
     }
 
     render() {
