@@ -6,6 +6,11 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import '../CreateGroup/CreateGroup'
 import GroupMemberPic from './testprofpic.png';
+import { connect } from 'react-redux';
+
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
 
 const MyList = styled(List)({
     border: 1,
@@ -44,10 +49,14 @@ class GroupDetailPage extends Component {
         <div><br></br>
             <br></br><h1>Example Group</h1></div>
         <div className="pics">
-            <img className="groupPics" src={GroupMemberPic}></img>
-            <img className="groupPics" src={GroupMemberPic}></img>
-            <img className="groupPics" src={GroupMemberPic}></img>
-            <img className="groupPics" src={GroupMemberPic}></img>
+                    {this.props.reduxState.groupDetails.map((member) => {
+                        return (
+                            <><div className="group-member"><img className="groupPics" src={GroupMemberPic}></img>
+                            {member.username}
+                            </div>
+                            </>
+                        )
+                    })}
         </div>
         <div className="buttons">
             <button className="modal-btn">Edit Members</button>
@@ -59,4 +68,4 @@ class GroupDetailPage extends Component {
 )}
 }
 
-export default GroupDetailPage;
+export default connect(mapStateToProps)(GroupDetailPage);
