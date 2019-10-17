@@ -37,10 +37,11 @@ class GroupDetailPage extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'SELECT_GROUP', payload: this.props.match.params.id });
+        this.props.dispatch({ type: 'FETCH_GROUP_PREFERENCES', payload: this.props.match.params.id });
     }
 
     groupPrefs = () => {
-        this.props.history.push("/GroupPreferences")
+        this.props.history.push(`/GroupPreferences/${this.props.match.params.id}`)
     }
 
     render() {
@@ -51,7 +52,7 @@ class GroupDetailPage extends Component {
             <Link to="/MyGroups" className="backBtn">Back</Link>
             <button className="leaveBtn">Leave Group</button></div>
         <div><br></br>
-            <br></br><h1>Example Group</h1></div>
+            <br></br><h1>GROUP NAME GOES HERE</h1></div>
         <div className="pics">
                     {this.props.reduxState.groupDetails.map((member) => {
                         return (

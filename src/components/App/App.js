@@ -88,7 +88,7 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/GroupPreferences"
+              path="/GroupPreferences/:id"
               component={GroupPreferences}
             />
             <ProtectedRoute
