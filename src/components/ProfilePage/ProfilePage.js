@@ -375,12 +375,14 @@ class ProfilePage extends Component {
 
     handleAddLikes = () => {
         console.log('adding genre to Likes:', this.state.genreLikeName);
-        this.props.dispatch({ type: 'ADD_USER_LIKES', payload: {user_id: this.props.reduxState.user.id, genre_id: this.state.genreLikeId}})
+        this.props.dispatch({ type: 'ADD_USER_LIKES', payload: {user_id: this.props.reduxState.user.id, genre_id: this.state.genreLikeId}});
+        this.handleLikesClose();
     }
 
     handleAddDislikes = () => {
         console.log('adding genre to Dislikes:', this.state.genreDislikeName);
-        this.props.dispatch({ type: 'ADD_USER_DISLIKES', payload: { user_id: this.props.reduxState.user.id, genre_id: this.state.genreDislikeId } })
+        this.props.dispatch({ type: 'ADD_USER_DISLIKES', payload: { user_id: this.props.reduxState.user.id, genre_id: this.state.genreDislikeId }});
+        this.handleDislikesClose();
     }
 
     render() {
