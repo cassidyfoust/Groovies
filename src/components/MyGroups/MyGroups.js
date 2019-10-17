@@ -39,8 +39,9 @@ class MyGroupsPage extends Component{
         this.props.dispatch({ type: 'FETCH_GROUPS', payload: this.props.reduxState.user.id });
     }
 
-    handleClick = () => {
-        console.log("list item clicked");
+    handleClick = (groupId) => {
+        console.log("list item clicked", groupId);
+        this.props.dispatch({type: 'SELECT_GROUP', payload: groupId})
         this.props.history.push("/GroupDetails")
     }
 
@@ -60,7 +61,7 @@ class MyGroupsPage extends Component{
         <MyList>
             {this.props.reduxState.groups.map((group) => {
                             return (
-                                <> <MyListItem onClick={this.handleClick}>
+                                <> <MyListItem onClick={(event) => {this.handleClick(group.id)}}>
                                     {group.group_name}
                                     </MyListItem>
                                 </>
