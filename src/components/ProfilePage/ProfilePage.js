@@ -19,9 +19,13 @@ const mapStateToProps = reduxState => ({
 const MyModal = styled(Modal)({
     position: 'relative',
     width: "30%",
+    height: "30%",
+    marginLeft: "30%",
+    marginTop: "10%",
+    padding: 50,
     backgroundColor: '#ffffff',
     color: '#000000',
-    border: '2px solid #000'
+    border: '1px solid #000'
 })
 
 const MyCard = styled(Card)({
@@ -520,7 +524,7 @@ class ProfilePage extends Component {
                     aria-labelledby="transition-modal-title"
                     aria-describedby="transition-modal-description"
                     open={this.state.dislikesIsOpen}
-                    onClose={this.handleDislikeClose}
+                    onClose={this.handleDislikesClose}
                     closeAfterTransition
                     BackdropComponent={Backdrop}
                     BackdropProps={{
