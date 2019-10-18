@@ -15,7 +15,8 @@ class CreateGroup extends Component {
     state = {
         groupName: '',
         id: this.props.match.params.id,
-        searchResults: []
+        searchResults: [],
+        groupMembers: []
     }
 
     handleNameChange = (event) => {
@@ -43,6 +44,15 @@ class CreateGroup extends Component {
     })
 }
 
+addGroupMember = (username) => {
+    console.log(username)
+    this.setState({
+        ...this.state,
+        groupMembers: [...this.state.groupMembers,
+        username]
+    })
+}
+
     render() {
 
         return (
@@ -60,14 +70,16 @@ class CreateGroup extends Component {
         </div>
         <h3>Members:</h3>
                 <ul>
-                    <li>Cass <IconButton><DeleteIcon /></IconButton></li>
-                    <li>Pat <IconButton><DeleteIcon /></IconButton></li>
-                    <li>Emma <IconButton><DeleteIcon /></IconButton></li>
-                    <li>Lumi <IconButton><DeleteIcon /></IconButton></li>
+                    {this.state.groupMembers.map((member) => {
+                        return(
+                    <li>{member}<IconButton><DeleteIcon /></IconButton></li>
+                    )
+                        }
+                    )}
                 </ul>
         <h3>Add Members:</h3>
         <div>
-            <AutoComplete options={this.state.searchResults}/>
+            <AutoComplete options={this.state.searchResults} handleClick={this.addGroupMember}/>
         </div>
         <div className="buttons">
             <button className="createGroupBtn">Create Group</button><Link to="/MyGroups" className="createGroupBtn">Cancel</Link>

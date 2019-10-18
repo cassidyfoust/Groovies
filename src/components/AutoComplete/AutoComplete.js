@@ -39,6 +39,7 @@ export class Autocomplete extends Component {
       showOptions: false,
       userInput: e.currentTarget.innerText
     });
+    this.props.handleClick(e.currentTarget.innerText)
   };
   onKeyDown = (e) => {
     const { activeOption, filteredOptions } = this.state;
