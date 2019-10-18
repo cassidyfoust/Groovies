@@ -6,7 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/:id', (req, res) => {
-    const queryText = `SELECT "group_name", "group".id FROM "user"
+    const queryText = `SELECT "group_name", "group".id, "group".admin FROM "user"
         JOIN "user_group" ON "user".id = "user_group".user_id
         JOIN "group" ON "group".id = "user_group".group_id
         WHERE "user".id=$1;`
