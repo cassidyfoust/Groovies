@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
-import TextField from '@material-ui/core/TextField';
-import DeleteIcon from '@material-ui/icons/Delete';
 import './CreateGroup.css';
 import { Link } from 'react-router-dom';
-import { styled } from '@material-ui/core/styles';
+// import { styled } from '@material-userIdsui/core/styles';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import AutoComplete from '../AutoComplete/AutoComplete'
 
+
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
 
 class CreateGroup extends Component {
 
@@ -16,7 +17,9 @@ class CreateGroup extends Component {
         groupName: '',
         id: this.props.match.params.id,
         searchResults: [],
-        groupMembers: []
+        searchResultsWithId: [],
+        groupMembers: [],
+        userIds: []
     }
 
     handleNameChange = (event) => {
@@ -37,20 +40,38 @@ class CreateGroup extends Component {
                     this.setState({
                         ...this.state,
                         searchResults: [...this.state.searchResults, 
-                        person.username]
+                        person.username],
+                        searchResultsWithId: [...this.state.searchResultsWithId,
+                        person]
                 })
                 console.log('in getInfo:', this.state.searchResults)
             })
     })
 }
 
+createGroup = () => {
+    this.props.dispatch({type: 'CREATE_GROUP', payload:{name: this.state.groupName, memberIds: this.state.userIds, admin_id: this.props.reduxState.user.id} })
+}
+
 addGroupMember = (username) => {
-    console.log(username)
     this.setState({
         ...this.state,
-        groupMembers: [...this.state.groupMembers,
-        username]
-    })
+       groupMembers: [...this.state.groupMembers, username]
+    });
+    this.addGroupIds(username);
+}
+
+addGroupIds = (username) => {
+    let idToAdd = 0
+        this.state.searchResultsWithId.forEach(result => {
+            if (username == result.username){
+               idToAdd = result.id
+            }
+        })
+    this.setState({
+        ...this.state,
+        userIds: [...this.state.userIds, idToAdd]
+    });
 }
 
     render() {
@@ -68,11 +89,12 @@ addGroupMember = (username) => {
             onChange={(event) => this.handleNameChange(event)}
             className="search-box"/>
         </div>
+        {JSON.stringify(this.state.groupName)}
         <h3>Members:</h3>
                 <ul>
                     {this.state.groupMembers.map((member) => {
                         return(
-                    <li>{member}<IconButton><DeleteIcon /></IconButton></li>
+                    <li>{member}</li>
                     )
                         }
                     )}
@@ -82,10 +104,10 @@ addGroupMember = (username) => {
             <AutoComplete options={this.state.searchResults} handleClick={this.addGroupMember}/>
         </div>
         <div className="buttons">
-            <button className="createGroupBtn">Create Group</button><Link to="/MyGroups" className="createGroupBtn">Cancel</Link>
+            <button className="createGroupBtn" onClick={this.createGroup}>Create Group</button><Link to="/MyGroups" className="createGroupBtn">Cancel</Link>
         </div>
     </div>
 )}
         };
 
-export default CreateGroup;
+export default connect(mapStateToProps)(CreateGroup);

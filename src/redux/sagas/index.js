@@ -11,7 +11,8 @@ import getGroupDetails from './groupDetailsSaga';
 import fetchGroupPreferencesFromUser from './fetchGroupPreferencesFromUserSaga';
 import fetchGroupPreferences from './groupPreferencesSaga';
 import postGroupPreferences from './postGroupPreferencesSaga';
-import deleteGroupGenre from './deleteGroupGenreSaga'
+import deleteGroupGenre from './deleteGroupGenreSaga';
+import createGroup from './createGroupSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -31,6 +32,7 @@ export default function* rootSaga() {
   yield takeEvery('FETCH_GROUP_PREFERENCES', fetchGroupPreferences);
   yield takeEvery('POST_GROUP_PREFERENCES', postGroupPreferences);
   yield takeEvery('DELETE_GROUP_GENRE', deleteGroupGenre);
+  yield takeEvery('CREATE_GROUP', createGroup)
   yield all([
     loginSaga(),
     registrationSaga(),
