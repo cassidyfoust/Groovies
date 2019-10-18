@@ -19,6 +19,7 @@ const getGroupPrefsFromUsersRouter = require('./routes/get.group.preferences.fro
 const groupPreferencesRouter = require('./routes/group.preferences.router')
 const searchUsersRouter = require('./routes/search.users.router')
 const getNewGroupIdRouter = require('./routes/new.group.id.router')
+const addGroupMembersRouter = require('./routes/add.group.members.router.js')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -42,6 +43,7 @@ app.use('/api/get_prefs_from_users', getGroupPrefsFromUsersRouter);
 app.use('/api/group_preferences_get', groupPreferencesRouter);
 app.use('/api/search_users', searchUsersRouter)
 app.use('/api/get_group_id', getNewGroupIdRouter)
+app.use('/api/add_group_members', addGroupMembersRouter)
 
 // Serve static files
 app.use(express.static('build'));
