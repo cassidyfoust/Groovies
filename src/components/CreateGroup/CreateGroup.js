@@ -54,10 +54,6 @@ createGroup = () => {
 }
 
 addGroupMember = (username) => {
-    this.setState({
-        ...this.state,
-       groupMembers: [...this.state.groupMembers, username]
-    });
     this.addGroupIds(username);
 }
 
@@ -70,6 +66,7 @@ addGroupIds = (username) => {
         })
     this.setState({
         ...this.state,
+        groupMembers: [...this.state.groupMembers, username],
         userIds: [...this.state.userIds, idToAdd]
     });
 }
@@ -89,7 +86,6 @@ addGroupIds = (username) => {
             onChange={(event) => this.handleNameChange(event)}
             className="search-box"/>
         </div>
-        {JSON.stringify(this.state.groupName)}
         <h3>Members:</h3>
                 <ul>
                     {this.state.groupMembers.map((member) => {
