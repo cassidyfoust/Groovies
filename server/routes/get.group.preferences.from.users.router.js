@@ -6,7 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/:id', (req, res) => {
-    const queryText = `SELECT * FROM "user"
+    const queryText = `SELECT "genres".genre_name, "genres".id, "genres".tmdb, "user".username, "user_genres".like FROM "user"
 JOIN "user_genres" ON "user".id = "user_genres".user_id
 JOIN "genres" ON "genres".id = "user_genres".genre_id
 JOIN "user_group" ON "user".id = "user_group".user_id
@@ -24,6 +24,7 @@ WHERE "group".id=$1;`
  * POST route template
  */
 router.post('/', (req, res) => {
+    console.log('post preferences route hit', req.body)
     for (let i=0; i<req.body.length; i++){
     let queryText = ''
     let queryValues = [req.body[i].group_id, req.body[i].genre_id, req.body[i].like]

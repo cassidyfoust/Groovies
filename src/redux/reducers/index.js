@@ -6,6 +6,7 @@ import groups from './groupsReducer';
 import userGenres from './userGenresReducer';
 import groupDetails from './groupDetailsReducer'
 import groupPreferences from './groupPreferencesReducer'
+import userPreferencesForGroup from './userPreferencesForGroup'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   groups,
   userGenres,
   groupDetails,
-  groupPreferences
+  groupPreferences,
+  userPreferencesForGroup
 });
 
 export default rootReducer;

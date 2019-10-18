@@ -65,6 +65,10 @@ class GroupPreferences extends Component {
         genreDislikeId: 0
     }
 
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_GROUP_PREFERENCES', payload: this.props.match.params.id})
+    }
+
     handleDelete = (genreId) => {
         console.log('deleting:', genreId);
         this.props.dispatch({ type: 'DELETE_USER_GENRE', payload: { genre: genreId, id: this.props.reduxState.user.id } })
@@ -401,7 +405,7 @@ class GroupPreferences extends Component {
                             </NewIconBtn>
                         </MyCard>
                     </div>
-                    <p>I Dislike:</p>
+                    <p>We Dislike:</p>
                     <div className="prefs">
                         {this.props.reduxState.groupPreferences.map((genre) => {
                             if (genre.like === false) {

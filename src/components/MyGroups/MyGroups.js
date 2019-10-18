@@ -41,6 +41,7 @@ class MyGroupsPage extends Component{
 
     handleClick = (groupId) => {
         console.log("list item clicked", groupId);
+        this.props.dispatch({ type: 'FETCH_GROUP_PREFERENCES_FROM_USER', payload: groupId});
         this.props.history.push(`/GroupDetails/${groupId}`)
     }
 

@@ -12,32 +12,15 @@ const mapStateToProps = reduxState => ({
     reduxState,
 });
 
-const MyList = styled(List)({
-    border: 1,
-    borderColor: "#000000",
-})
-
-const MyListItem = styled(ListItem)({
-    background: '#00acb0',
-    border: 0,
-    '&:hover': {
-        background: 'white'
-    },
-    // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    // color: 'white',
-    height: 26,
-    width: "100%",
-    paddingLeft: 7,
-    paddingTop: 5,
-    fontSize: 12,
-    textAlign: "center"
-});
-
 class GroupDetailPage extends Component {
+
+    state = {
+        userGenres: this.props.reduxState.userPreferencesForGroup
+    }
 
     componentDidMount() {
         this.props.dispatch({ type: 'SELECT_GROUP', payload: this.props.match.params.id });
-        this.props.dispatch({ type: 'FETCH_GROUP_PREFERENCES', payload: this.props.match.params.id });
+        this.props.dispatch({type: 'POST_GROUP_PREFERENCES', payload: this.state.userGenres})
     }
 
     groupPrefs = () => {

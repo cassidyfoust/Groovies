@@ -15,8 +15,8 @@ const userGenresRouter = require('./routes/user.genres.router')
 const addUserDislikesRouter = require('./routes/user.dislikes.router')
 const addUserLikesRouter = require('./routes/user.likes.router')
 const groupDetailsRouter = require('./routes/group.details.router')
-const setGroupPreferencesRouter = require('./routes/set.group.preferences.router')
-const pageGroupPreferencesRouter = require('./routes/page.group.preferences.router')
+const getGroupPrefsFromUsersRouter = require('./routes/get.group.preferences.from.users.router')
+const groupPreferencesRouter = require('./routes/group.preferences.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -36,8 +36,8 @@ app.use('/api/user_genres', userGenresRouter)
 app.use('/api/add_user_likes', addUserLikesRouter);
 app.use('/api/add_user_dislikes', addUserDislikesRouter);
 app.use('/api/group_details', groupDetailsRouter);
-app.use('/api/group_preferences_set', setGroupPreferencesRouter);
-app.use('/api/group_preferences_get', pageGroupPreferencesRouter);
+app.use('/api/get_prefs_from_users', getGroupPrefsFromUsersRouter);
+app.use('/api/group_preferences_get', groupPreferencesRouter);
 
 // Serve static files
 app.use(express.static('build'));

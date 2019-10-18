@@ -6,6 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/:id', (req, res) => {
+    console.log('in the get for group preferences')
 const queryText = `SELECT "genre_name", "genre_id", "like" FROM "group"
 JOIN "group_genres" ON "group".id = "group_genres".group_id
 JOIN "genres" ON "genres".id = "group_genres".genre_id
