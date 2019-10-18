@@ -25,9 +25,9 @@ WHERE "group".id=$1;`
  */
 router.post('/', (req, res) => {
     console.log('post preferences route hit', req.body)
-    for (let i=0; i<req.body.length; i++){
+    for (let i=0; i<req.body.userGenres.length; i++){
     let queryText = ''
-    let queryValues = [req.body[i].group_id, req.body[i].genre_id, req.body[i].like]
+    let queryValues = [req.body.id, req.body.userGenres[i].id, req.body.userGenres[i].like]
     queryText = `INSERT INTO "group_genres" ("id", "group_id", "genre_id", "like") VALUES (DEFAULT, $1, $2, $3)`;
     console.log(queryText, queryValues)
     pool.query(queryText, queryValues)

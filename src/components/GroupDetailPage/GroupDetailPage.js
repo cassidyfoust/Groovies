@@ -15,12 +15,13 @@ const mapStateToProps = reduxState => ({
 class GroupDetailPage extends Component {
 
     state = {
-        userGenres: this.props.reduxState.userPreferencesForGroup
+        userGenres: this.props.reduxState.userPreferencesForGroup,
+        id: this.props.match.params.id
     }
 
     componentDidMount() {
         this.props.dispatch({ type: 'SELECT_GROUP', payload: this.props.match.params.id });
-        this.props.dispatch({type: 'POST_GROUP_PREFERENCES', payload: this.state.userGenres})
+        this.props.dispatch({type: 'POST_GROUP_PREFERENCES', payload: this.state})
     }
 
     groupPrefs = () => {
