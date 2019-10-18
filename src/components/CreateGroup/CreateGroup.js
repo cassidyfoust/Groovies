@@ -7,20 +7,14 @@ import './CreateGroup.css';
 import { Link } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
 import axios from 'axios';
-import Suggestions from './Suggestions';
+import AutoComplete from '../AutoComplete/AutoComplete'
 
-const Searchbar = styled(TextField)({
-    height: 20,
-    padding: 15,
-    margin: 5
-})
 
 class CreateGroup extends Component {
 
     state = {
         groupName: '',
         id: this.props.match.params.id,
-        query: '',
         searchResults: []
     }
 
@@ -31,29 +25,23 @@ class CreateGroup extends Component {
         })
     }
 
-    handleSearchChange = (event) => {
-        this.setState({
-            ...this.state,
-            query: event.target.value
-        }, () => {
-            if (this.state.query && this.state.query.length > 1) {
-                if (this.state.query.length % 2 === 0) {
-                    this.getInfo()
-                }
-            }
-        })
+    componentDidMount(){
+        this.getInfo();
     }
 
     getInfo = () => {
-        axios.get('/api/search_users?q=' + this.state.query)
+        axios.get('/api/search_users/')
             .then(({ data }) => {
-                console.log('the search data is:', data)
-                this.setState({
-                    ...this.state,
-                    searchResults: data
+                data.forEach(person => {
+                    this.setState({
+                        ...this.state,
+                        searchResults: [...this.state.searchResults, 
+                        person.username]
                 })
+                console.log('in getInfo:', this.state.searchResults)
             })
-    }
+    })
+}
 
     render() {
 
@@ -62,34 +50,25 @@ class CreateGroup extends Component {
         <h1>
             Create New Group:
             </h1>
-            <div className="group-name">
+            <div>
         <h3>Group Name:</h3>
-        <Searchbar
+        <input
             id="outlined-name"
             placeholder="Enter a name"
             onChange={(event) => this.handleNameChange(event)}
-            margin="normal"
-            variant="outlined"></Searchbar>
+            className="search-box"/>
         </div>
+        <h3>Members:</h3>
+                <ul>
+                    <li>Cass <IconButton><DeleteIcon /></IconButton></li>
+                    <li>Pat <IconButton><DeleteIcon /></IconButton></li>
+                    <li>Emma <IconButton><DeleteIcon /></IconButton></li>
+                    <li>Lumi <IconButton><DeleteIcon /></IconButton></li>
+                </ul>
         <h3>Add Members:</h3>
-        <div className="searchbar">
-            <Searchbar
-                id="outlined-name"
-                placeholder="Search by username"
-                onChange={(event) => this.handleSearchChange(event)}
-                    margin="normal"
-                variant="outlined"></Searchbar>
-            <IconButton aria-label="search">
-                <SearchIcon />
-            </IconButton>
-            <Suggestions results={this.state.searchResults} />
+        <div>
+            <AutoComplete options={this.state.searchResults}/>
         </div>
-        <ul>
-            <li>Cass <IconButton><DeleteIcon /></IconButton></li>
-            <li>Pat <IconButton><DeleteIcon /></IconButton></li>
-            <li>Emma <IconButton><DeleteIcon /></IconButton></li>
-            <li>Lumi <IconButton><DeleteIcon /></IconButton></li>
-        </ul>
         <div className="buttons">
             <button className="createGroupBtn">Create Group</button><Link to="/MyGroups" className="createGroupBtn">Cancel</Link>
         </div>
