@@ -375,6 +375,22 @@ class GroupPreferences extends Component {
     }
 
     render() {
+
+        let Delete;
+        let Add
+
+        if (this.props.reduxState.groupDetails.admin === this.props.reduxState.user.id) {
+            Delete = ''
+            Add = <MyCard>
+                <NewIconBtn onClick={this.handleLikesOpen}>
+                    <AddIcon/>
+                </NewIconBtn>
+            </MyCard>
+        }
+        else {
+            Delete = ''
+        }
+
         return (
             <>
                 <div>
@@ -399,11 +415,7 @@ class GroupPreferences extends Component {
                             }
                         }
                         )}
-                        <MyCard>
-                            <NewIconBtn>
-                                <AddIcon onClick={this.handleLikesOpen} />
-                            </NewIconBtn>
-                        </MyCard>
+                    {Add}
                     </div>
                     <p>We Dislike:</p>
                     <div className="prefs">
@@ -420,11 +432,7 @@ class GroupPreferences extends Component {
                             }
                         }
                         )}
-                        <MyCard>
-                            <NewIconBtn>
-                                <AddIcon onClick={this.handleLikesOpen}/>
-                            </NewIconBtn>
-                        </MyCard>
+                        {Add}
                     </div>
                     <p>We Watched:
                         Someday there will be a carousel here
