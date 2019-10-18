@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/:id', (req, res) => {
     console.log('in the get for group preferences')
-const queryText = `SELECT "genre_name", "genre_id", "like" FROM "group"
+const queryText = `SELECT "genre_name", "genre_id", "group_genres".id, "like" FROM "group"
 JOIN "group_genres" ON "group".id = "group_genres".group_id
 JOIN "genres" ON "genres".id = "group_genres".genre_id
 WHERE "group".id=$1`
@@ -34,6 +34,20 @@ router.post('/', (req, res) => {
     //             console.log('Error completing POST group preferences query', err);
     //         });
     // }
+});
+
+router.delete('/:deleteInfo', (req, res) => {
+    console.log(req.params.deleteInfo)
+    let queryText = ''
+    let queryValues = req.params.deleteInfo.split('-')
+    queryText = 'DELETE from "group_genres" where "group_id" = $1 and "id" = $2;';
+    console.log(queryText, queryValues)
+    pool.query(queryText, queryValues)
+        .then(() => { res.sendStatus(200); })
+        .catch((err) => {
+            console.log('Error completing DELETE movie genre query', err);
+            res.sendStatus(500);
+        });
 });
 
 module.exports = router;

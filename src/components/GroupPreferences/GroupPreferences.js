@@ -71,7 +71,7 @@ class GroupPreferences extends Component {
 
     handleDelete = (genreId) => {
         console.log('deleting:', genreId);
-        this.props.dispatch({ type: 'DELETE_USER_GENRE', payload: { genre: genreId, id: this.props.reduxState.user.id } })
+        this.props.dispatch({ type: 'DELETE_GROUP_GENRE', payload: { genre: genreId, id: this.props.reduxState.user.id } })
     }
 
     handleLikesOpen = () => {
@@ -391,7 +391,7 @@ class GroupPreferences extends Component {
                                 return (
                                     <MyCard>
                                         ⁠{genre.genre_name}
-                                        <NewIconBtn onClick={(event) => { this.handleDelete(genre.genre_id) }} >
+                                        <NewIconBtn onClick={(event) => { this.handleDelete(genre.id) }} >
                                             <MyDelete />
                                         </NewIconBtn>
                                     </MyCard>
@@ -412,7 +412,7 @@ class GroupPreferences extends Component {
                                 return (
                                     <MyCard>
                                         ⁠{genre.genre_name}
-                                        <NewIconBtn onClick={(event) => { this.handleDelete(genre.genre_id) }} >
+                                        <NewIconBtn onClick={(event) => { this.handleDelete(genre.id) }} >
                                             <MyDelete />
                                         </NewIconBtn>
                                     </MyCard>
