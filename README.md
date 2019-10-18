@@ -120,3 +120,4 @@ Customize this ReadMe and the code comments in this project to read less like a 
 - Styling
 - Add in code that prevents users from adding duplicate likes/dislikes
 - check for dupes using logic for users!!!!!!
+- only add group preferences when group is formed
