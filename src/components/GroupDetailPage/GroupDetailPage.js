@@ -13,31 +13,25 @@ class GroupDetailPage extends Component {
 
     state = {
         userGenres: this.props.reduxState.userPreferencesForGroup,
-        id: this.props.match.params.id,
-        isAdmin: false
+        id: this.props.match.params.id
     }
 
     componentDidMount() {
         this.props.dispatch({ type: 'SELECT_GROUP', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'POST_GROUP_PREFERENCES', payload: { userGenres: this.props.reduxState.userPreferencesForGroup, id: this.props.match.params.id}});
-        this.adminCheck();
     }
-
-adminCheck = () => {
-    let groupAdmin = this.props.reduxState.groupDetails.admin
-        if (groupAdmin == this.props.reduxState.user.id) {
-            this.setState({
-                ...this.state,
-                isAdmin: true
-            })
-        }
-}
 
     groupPrefs = () => {
         this.props.history.push(`/GroupPreferences/${this.props.match.params.id}`)
     }
 
 render() {
+
+    let edit;
+
+    if (this.props.reduxState.groupDetails.admin === this.props.reduxState.user.id){
+        edit = <button className="modal-btn">Edit Members</button>
+    }
 
     return (
 
@@ -58,10 +52,7 @@ render() {
                     })}
         </div>
         <div className="buttons">
-            {function(){
-                if(this.state.isAdmin){
-                    return <button className="modal-btn">Edit Members</button>
-            }}}
+            {edit}
             <button className="modal-btn" onClick={this.groupPrefs}>View Group Preferences</button>
             <button className="modal-btn">Suggest a New Movie</button>
             <button className="modal-btn">Suggest a Rewatch</button>
