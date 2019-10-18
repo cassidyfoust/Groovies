@@ -66,6 +66,7 @@ class GroupPreferences extends Component {
     }
 
     componentDidMount() {
+        this.props.dispatch({ type: 'SELECT_GROUP', payload: this.props.match.params.id });
         this.props.dispatch({ type: 'FETCH_GROUP_PREFERENCES', payload: this.props.match.params.id})
     }
 
@@ -376,19 +377,14 @@ class GroupPreferences extends Component {
 
     render() {
 
-        let Delete;
         let Add
 
         if (this.props.reduxState.groupDetails.admin === this.props.reduxState.user.id) {
-            Delete = ''
             Add = <MyCard>
                 <NewIconBtn onClick={this.handleLikesOpen}>
                     <AddIcon/>
                 </NewIconBtn>
             </MyCard>
-        }
-        else {
-            Delete = ''
         }
 
         return (
@@ -398,7 +394,7 @@ class GroupPreferences extends Component {
                         <Link to={`/GroupDetails/${this.props.match.params.id}`} className="backBtn">Back</Link>
                     </div>
                     <h1>
-                        Example Group's Preferences:
+                        {this.props.reduxState.groupDetails.name}'s Preferences:
     </h1>
                     <p>We Like:</p>
                     <div className="prefs">
