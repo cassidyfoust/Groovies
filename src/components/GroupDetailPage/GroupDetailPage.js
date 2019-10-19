@@ -30,7 +30,7 @@ render() {
     let edit;
 
     if (this.props.reduxState.groupDetails.admin === this.props.reduxState.user.id){
-        edit = <button className="modal-btn">Edit Members</button>
+        edit = <button className="modal-btn">Edit Group</button>
     }
 
     return (

@@ -400,6 +400,7 @@ class GroupPreferences extends Component {
                     <div className="prefs">
                         {this.props.reduxState.groupPreferences.map((genre) => {
                             if (genre.like === true) {
+                                if (this.props.reduxState.groupDetails.admin === this.props.reduxState.user.id){
                                 return (
                                     <MyCard>
                                         ⁠{genre.genre_name}
@@ -408,6 +409,14 @@ class GroupPreferences extends Component {
                                         </NewIconBtn>
                                     </MyCard>
                                 )
+                                }
+                                else {
+                                    return (
+                                        <MyCard>
+                                            ⁠{genre.genre_name}
+                                        </MyCard>
+                                    )
+                                }
                             }
                         }
                         )}
@@ -417,6 +426,7 @@ class GroupPreferences extends Component {
                     <div className="prefs">
                         {this.props.reduxState.groupPreferences.map((genre) => {
                             if (genre.like === false) {
+                                if (this.props.reduxState.groupDetails.admin === this.props.reduxState.user.id){
                                 return (
                                     <MyCard>
                                         ⁠{genre.genre_name}
@@ -425,6 +435,14 @@ class GroupPreferences extends Component {
                                         </NewIconBtn>
                                     </MyCard>
                                 )
+                                }
+                                else {
+                                    return (
+                                        <MyCard>
+                                            ⁠{genre.genre_name}
+                                        </MyCard>
+                                    )
+                                }
                             }
                         }
                         )}
