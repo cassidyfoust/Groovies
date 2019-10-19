@@ -25,12 +25,16 @@ class GroupDetailPage extends Component {
         this.props.history.push(`/GroupPreferences/${this.props.match.params.id}`)
     }
 
+    editGroup = () => {
+        this.props.history.push(`/EditGroup/${this.props.match.params.id}`)
+    }
+
 render() {
 
     let edit;
 
     if (this.props.reduxState.groupDetails.admin === this.props.reduxState.user.id){
-        edit = <button className="modal-btn">Edit Group</button>
+        edit = <button className="modal-btn" onClick={this.editGroup}>Edit Group</button>
     }
 
     return (

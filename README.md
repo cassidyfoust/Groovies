@@ -117,12 +117,11 @@ Customize this ReadMe and the code comments in this project to read less like a 
 
 
 ## Cass Weekend To-Dos:
-- Add group likes and dislikes
 - User add movies (and likes/dislikes)
 - Group add movies (and likes/dislikes)
 - Suggest a movie
 - Suggest a rewatch
-- Edit members/name
+- Edit group members/name
 
 ## Cass To-Dos for Next Week:
 - Clean up CSS codes

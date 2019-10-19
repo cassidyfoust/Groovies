@@ -23,6 +23,7 @@ import CreateGroup from '../CreateGroup/CreateGroup.js';
 import GroupDetailPage from '../GroupDetailPage/GroupDetailPage';
 import GroupPreferences from '../GroupPreferences/GroupPreferences';
 import AddGroupMovie from '../AddGroupMovie/AddGroupMovie';
+import EditGroup from '../EditGroup/EditGroup'
 
 import './App.css';
 
@@ -95,6 +96,11 @@ class App extends Component {
               exact
               path="/AddGroupMovie"
               component={AddGroupMovie}
+            />
+            <ProtectedRoute
+              exact
+              path="/EditGroup/:id"
+              component={EditGroup}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
