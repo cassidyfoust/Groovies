@@ -375,17 +375,36 @@ class GroupPreferences extends Component {
         }
     }
 
+    handleAddLikes = () => {
+        console.log('adding genre to group Likes:', this.state.genreLikeName);
+        this.props.dispatch({ type: 'ADD_GROUP_LIKES', payload: { group_id: this.props.match.params.id, genre_id: this.state.genreLikeId } });
+        this.handleLikesClose();
+    }
+
+    handleAddDislikes = () => {
+        console.log('adding genre to Dislikes:', this.state.genreDislikeName);
+        this.props.dispatch({ type: 'ADD_GROUP_DISLIKES', payload: { group_id: this.props.match.params.id, genre_id: this.state.genreDislikeId } });
+        this.handleDislikesClose();
+    }
+
     render() {
 
-        let Add
+        let AddLikes;
+        let AddDislikes
 
         if (this.props.reduxState.groupDetails.admin === this.props.reduxState.user.id) {
-            Add = <MyCard>
+            AddLikes = <MyCard>
                 <NewIconBtn onClick={this.handleLikesOpen}>
                     <AddIcon/>
                 </NewIconBtn>
             </MyCard>
+            AddDislikes = <MyCard>
+                <NewIconBtn onClick={this.handleDislikesOpen}>
+                    <AddIcon />
+                </NewIconBtn>
+            </MyCard>
         }
+
 
         return (
             <>
@@ -420,7 +439,7 @@ class GroupPreferences extends Component {
                             }
                         }
                         )}
-                    {Add}
+                    {AddLikes}
                     </div>
                     <p>We Dislike:</p>
                     <div className="prefs">
@@ -446,7 +465,7 @@ class GroupPreferences extends Component {
                             }
                         }
                         )}
-                        {Add}
+                        {AddDislikes}
                     </div>
                     <p>We Watched:
                         Someday there will be a carousel here
@@ -467,7 +486,7 @@ class GroupPreferences extends Component {
                     }}
                 >
                     <div>
-                        <h2>Add a genre to your likes:</h2>
+                        <h2>Add a genre to the group likes:</h2>
                         <select onChange={this.handleLikeChange}>
                             <option>
                             </option>
@@ -545,7 +564,7 @@ class GroupPreferences extends Component {
                     }}
                 >
                     <div>
-                        <h2>Add a genre to your dislikes:</h2>
+                        <h2>Add a genre to the group dislikes:</h2>
                         <select onChange={this.handleDislikeChange}>
                             <option>
                             </option>
