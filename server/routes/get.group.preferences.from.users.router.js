@@ -6,6 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/:id', (req, res) => {
+    console.log('get route hit')
     const queryText = `SELECT "genres".genre_name, "genres".id, "genres".tmdb, "user".username, "user_genres".like FROM "user"
 JOIN "user_genres" ON "user".id = "user_genres".user_id
 JOIN "genres" ON "genres".id = "user_genres".genre_id

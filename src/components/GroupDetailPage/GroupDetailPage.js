@@ -18,7 +18,7 @@ class GroupDetailPage extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'SELECT_GROUP', payload: this.props.match.params.id });
-        this.props.dispatch({ type: 'POST_GROUP_PREFERENCES', payload: { userGenres: this.props.reduxState.userPreferencesForGroup, id: this.props.match.params.id}});
+        // this.props.dispatch({ type: 'POST_GROUP_PREFERENCES', payload: { userGenres: this.props.reduxState.userPreferencesForGroup, id: this.props.match.params.id}});
     }
 
     groupPrefs = () => {

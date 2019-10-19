@@ -13,10 +13,8 @@ router.get('/', (req, res) => {
  * POST user likes to database ("user_genres")
  */
 router.post('/', (req, res) => {
-    console.log(req.body[0])
-    let groupId = req.body[0].group_id
-    let members = req.body[0].members
-    console.log('the group id is:', groupId, 'the members are:', members)
+    let groupId = req.body.group_id
+    let members = req.body.members
     members.forEach(member => {
     let queryText = ''
     let queryValues = [member, groupId]

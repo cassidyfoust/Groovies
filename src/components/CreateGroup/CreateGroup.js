@@ -51,6 +51,7 @@ class CreateGroup extends Component {
 
 createGroup = () => {
     this.props.dispatch({type: 'CREATE_GROUP', payload:{name: this.state.groupName, memberIds: this.state.userIds, admin_id: this.props.reduxState.user.id} })
+    this.props.history.push('/MyGroups');
 }
 
 addGroupMember = (username) => {
