@@ -18,14 +18,15 @@ class GroupDetailPage extends Component {
         this.props.dispatch({ type: 'SELECT_GROUP', payload: this.props.match.params.id });
     }
 
+    cancelBtn = () => {
+        this.props.history.push(`/GroupDetails/${this.props.match.params.id}`)
+    }
+
     render() {
 
         return (
 
             <div>
-                <div className="back">
-                    <Link to={`GroupDetails/${this.props.match.params}`} className="backBtn">Back</Link>
-                    </div>
                 <div><br></br>
                     <br></br><h1>Edit {this.props.reduxState.groupDetails.name}</h1></div>
                 <div className="pics">
@@ -37,6 +38,9 @@ class GroupDetailPage extends Component {
                             </>
                         )
                     })}
+                </div>
+                <div>
+                    <button onClick={this.cancelBtn} className="backBtn">Cancel</button>
                 </div>
             </div>
         )
