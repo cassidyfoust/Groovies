@@ -37,10 +37,10 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:deleteInfo', (req, res) => {
-    console.log(req.params.deleteInfo)
+    console.log('the delete info is:', req.params.deleteInfo)
     let queryText = ''
     let queryValues = req.params.deleteInfo.split('-')
-    queryText = 'DELETE from "group_genres" where "group_id" = $1 and "id" = $2;';
+    queryText = 'DELETE from "group_genres" where "genre_id" = $1 and "group_id" = $2;';
     console.log(queryText, queryValues)
     pool.query(queryText, queryValues)
         .then(() => { res.sendStatus(200); })
