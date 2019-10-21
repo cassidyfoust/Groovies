@@ -17,7 +17,7 @@ class CreateGroup extends Component {
         id: this.props.match.params.id,
         searchResults: [],
         searchResultsWithId: [],
-        groupMembers: [],
+        groupMembers: [this.props.reduxState.user.id],
         userIds: []
     }
 

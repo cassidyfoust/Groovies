@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import AutoComplete from '../AutoComplete/AutoComplete'
+import AutoComplete from '../AutoComplete/AutoComplete';
+import './EditGroup.css'
 
 const mapStateToProps = reduxState => ({
     reduxState,
@@ -17,15 +18,25 @@ class GroupDetailPage extends Component {
         searchResults: [],
         searchResultsWithId: [],
         groupMembers: [],
-        userIds: []
+        addGroupMembers: [],
+        addUserIds: [],
+        membersToDelete: [],
+        removeUserIds: [],
+        isChecked: false
     }
 
     componentDidMount() {
         this.props.dispatch({ type: 'SELECT_GROUP', payload: this.props.match.params.id });
         this.getInfo();
+        this.getGroupMembers();
     }
 
     cancelBtn = () => {
+        this.props.history.push(`/GroupDetails/${this.props.match.params.id}`)
+    }
+
+    saveChanges = () => {
+        this.props.dispatch({ type: 'SAVE_CHANGES', payload: this.state});
         this.props.history.push(`/GroupDetails/${this.props.match.params.id}`)
     }
 
@@ -45,6 +56,19 @@ class GroupDetailPage extends Component {
             })
     }
 
+    getGroupMembers = () => {
+        axios.get(`/api/get_group_members/${this.props.match.params.id}`)
+            .then(({ data }) => {
+                data.forEach(person => {
+                    this.setState({
+                        ...this.state,
+                        groupMembers: [...this.state.groupMembers,
+                        person.username]
+                    })
+                })
+            })
+    }
+
     addGroupMember = (username) => {
         this.addGroupIds(username);
     }
@@ -58,8 +82,8 @@ class GroupDetailPage extends Component {
         })
         this.setState({
             ...this.state,
-            groupMembers: [...this.state.groupMembers, username],
-            userIds: [...this.state.userIds, idToAdd]
+            addGroupMembers: [...this.state.addGroupMembers, username],
+            addUserIds: [...this.state.addUserIds, idToAdd]
         });
     }
 
@@ -68,6 +92,20 @@ class GroupDetailPage extends Component {
             ...this.state,
             newGroupName: event.target.value
         })
+    }
+
+    removeGroupMember = (username) => {
+        let idToDelete = 0
+        this.state.searchResultsWithId.forEach(result => {
+            if (username == result.username) {
+                idToDelete = result.id
+            }
+        })
+        this.setState({
+            ...this.state,
+            membersToDelete: [...this.state.membersToDelete, username],
+            removeUserIds: [...this.state.removeUserIds, idToDelete]
+        });
     }
 
     render() {
@@ -90,7 +128,7 @@ class GroupDetailPage extends Component {
                     <AutoComplete options={this.state.searchResults} handleClick={this.addGroupMember} />
                 </div>
                 <ul>
-                    {this.state.groupMembers.map((member) => {
+                    {this.state.addGroupMembers.map((member) => {
                         return (
                             <li>{member}</li>
                         )
@@ -98,20 +136,25 @@ class GroupDetailPage extends Component {
                     )}
                 </ul>
                 <h3>Remove Group Members:</h3>
-                <div className="pics">
+                <div className="remove-member">
+                    <div>
+                        <AutoComplete options={this.state.groupMembers} handleClick={this.removeGroupMember} />
+                    </div>
                     <ul>
-                    {this.props.reduxState.groupDetails.details.map((member) => {
-                        return (
-                            <><div className="group-member">
-                                <li>{member.username}</li>
-                            </div>
-                            </>
-                        )
-                    })}
+                        {this.state.membersToDelete.map((member) => {
+                            return (
+                                <li>{member}</li>
+                            )
+                        }
+                        )}
                     </ul>
+                    Total info to change:
+                    Name: {this.state.newGroupName}
+                    Add members: {this.state.addGroupMembers}
+                    Delete members: {this.state.membersToDelete}
                 </div>
                 <div>
-                    <button className="backBtn">Save Changes</button>
+                    <button className="backBtn" onClick={this.saveChanges}>Save Changes</button>
                     <button onClick={this.cancelBtn} className="backBtn">Cancel</button>
                 </div>
             </div>

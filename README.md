@@ -130,3 +130,5 @@ Customize this ReadMe and the code comments in this project to read less like a 
 - Add in code that prevents users from adding duplicate likes/dislikes
 - check for dupes using logic for users!!!!!!
 - update group likes and dislikes when user adds likes or dislikes (post)
+- add failsafe where user cannot delete themselves from a group
+- add confirmations and stuff
