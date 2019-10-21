@@ -52,28 +52,26 @@ class GroupDetailPage extends Component {
         suggestRewatchOpen: false,
         suggestNewMovieOpen: false,
         rewatchMovie: '',
-        randomGenreId: 0,
-        randomMovie: ''
+        randomMovie: '',
     }
 
     generateNewMovie = () => {
         let randomGenreNumber = Math.floor(Math.random() * (this.props.reduxState.groupPreferences.length))
         this.setState({
             ...this.state,
-            randomGenreId: this.props.reduxState.groupPreferences[randomGenreNumber],
             suggestNewMovieOpen: true
         })
-        console.log('the random genre is:', this.props.reduxState.groupPreferences[randomGenreNumber])
+        console.log('the random genre is:', this.props.reduxState.groupPreferences[randomGenreNumber].tmdb)
         axios({
             method: 'GET',
-            url: `/api/random_movie/${this.state.randomGenreId.tmdb}`
+            url: `/api/random_movie/${this.props.reduxState.groupPreferences[randomGenreNumber].tmdb}`
         })
             .then((response) => {
                 console.log('the response is:', response)
-                this.props.dispatch({ type: 'SET_RANDOM', payload: response.data })
                 this.setState({
                     ...this.state,
-                    imgPath: `https://image.tmdb.org/t/p/w200/${response.data.poster_path}`
+                    randomMovie: response.data,
+                    randomMovieURL: `https://image.tmdb.org/t/p/w200/${response.data.poster_path}`
                 })
             })
             .catch(error => {
@@ -191,7 +189,12 @@ render() {
             BackdropProps={{
                 timeout: 500,
             }}
-            ><div>Try this:</div></MyModal>
+            ><div>Try this:
+                <h3>{this.state.randomMovie.original_title}</h3>
+                    <img
+                        src={this.state.randomMovieURL}
+                    /></div>
+                    </MyModal>
         <MyModal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"

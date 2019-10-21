@@ -15,7 +15,7 @@ router.get('/:id', (req, res) => {
         url: endpoint
     })
         .then((response) => {
-            console.log('the response is:', response.data.results[randomMovieNumber].original_title)
+            console.log('the response is:', response.data.results)
             res.send(response.data.results[randomMovieNumber])
         })
         .catch(error => {
