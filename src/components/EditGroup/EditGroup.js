@@ -37,6 +37,8 @@ class GroupDetailPage extends Component {
 
     saveChanges = () => {
         this.props.dispatch({ type: 'SAVE_CHANGES', payload: this.state});
+        this.props.dispatch({ type: 'DELETE_FROM_GROUP', payload: this.state});
+        this.props.dispatch({ type: 'CHANGE_GROUP_NAME', payload: this.state})
         this.props.history.push(`/GroupDetails/${this.props.match.params.id}`)
     }
 
@@ -136,6 +138,7 @@ class GroupDetailPage extends Component {
                     )}
                 </ul>
                 <h3>Remove Group Members:</h3>
+                <h6>Note: you may only remove one group member at a time.</h6>
                 <div className="remove-member">
                     <div>
                         <AutoComplete options={this.state.groupMembers} handleClick={this.removeGroupMember} />
