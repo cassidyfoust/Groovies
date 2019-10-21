@@ -189,11 +189,12 @@ render() {
             BackdropProps={{
                 timeout: 500,
             }}
-            ><div>Try this:
+            ><div>You should watch
                 <h3>{this.state.randomMovie.original_title}</h3>
                     <img
                         src={this.state.randomMovieURL}
-                    /></div>
+                    />
+                    <b>Description:</b>{this.state.randomMovie.overview}</div>
                     </MyModal>
         <MyModal
             aria-labelledby="transition-modal-title"

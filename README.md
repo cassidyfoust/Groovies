@@ -117,7 +117,6 @@ Customize this ReadMe and the code comments in this project to read less like a 
 
 
 ## Cass Week To-Dos:
-- Suggest a movie - Tuesday
 - Select unique from Casie
 
 ## Cass To-Dos for Next Weekend:
@@ -130,3 +129,4 @@ Customize this ReadMe and the code comments in this project to read less like a 
 - add failsafe where user cannot delete themselves from a group AND cannot add member who is already in the group
 - add confirmations and stuff
 - delete group?
+- omit group dislikes from search
