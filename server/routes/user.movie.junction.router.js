@@ -14,13 +14,13 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
     let queryText = ''
-    let queryValues = [req.body.original_title, req.body.overview, req.body.poster_path]
-    queryText = `INSERT INTO "user_movies" ("user_id", "movie_id") VALUES ($1, $2, $3);`;
+    let queryValues = [req.body.user_id, req.body.movie_id]
+    queryText = `INSERT INTO "user_movies" ("user_id", "movie_id") VALUES ($1, $2);`;
     console.log(queryText, queryValues)
     pool.query(queryText, queryValues)
         .then(res.sendStatus(200))
         .catch((err) => {
-            console.log('Error completing ADD NEW USER MOVIE', err)
+            console.log('Error completing ADD TO JUNCTION TABLE', err)
         })
 });
 

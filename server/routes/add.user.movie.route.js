@@ -9,9 +9,8 @@ router.get('/:title', (req, res) => {
     let queryText = ''
     let queryValues = req.params.title.split('+').join(' ')
     queryText = `SELECT "id" FROM "movies" WHERE "title" LIKE '%' || $1 || '%';`;
-    console.log(queryValues, queryText)
     pool.query(queryText, [queryValues])
-        .then((result) => { res.send(result.rows); })
+        .then((result) => { console.log(result.rows[0]); res.send(result.rows[0]); })
         .catch((err) => {
             console.log('Error completing SEARCH NEW USER MOVIE', err)
         })
