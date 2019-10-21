@@ -116,13 +116,13 @@ Customize this ReadMe and the code comments in this project to read less like a 
 
 
 
-## Cass Weekend To-Dos:
-- User add movies (and likes/dislikes)
-- Group add movies (and likes/dislikes)
-- Suggest a movie
-- Suggest a rewatch
+## Cass Week To-Dos:
+- User add movies (and likes/dislikes) - Monday
+- Group add movies (and likes/dislikes) - Monday/Tuesday
+- Suggest a movie - Tuesday/Wednesday
+- Suggest a rewatch - Tuesday/Wednesday
 
-## Cass To-Dos for Next Week:
+## Cass To-Dos for Next Weekend:
 - Clean up CSS codes
 - Styling
 - upload user photos
