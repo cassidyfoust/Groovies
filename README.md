@@ -117,7 +117,6 @@ Customize this ReadMe and the code comments in this project to read less like a 
 
 
 ## Cass Week To-Dos:
-- Group add movies (and likes/dislikes) - Monday/Tuesday
 - Suggest a movie - Tuesday/Wednesday
 - Suggest a rewatch - Tuesday/Wednesday
 - Select unique from Casie
