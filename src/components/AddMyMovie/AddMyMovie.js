@@ -359,6 +359,7 @@ class AddMyMovie extends Component {
     addMovie = () => {
         console.log('Adding the following information:', this.state)
         this.props.dispatch({ type: 'ADD_USER_LIKES', payload: { user_id: this.props.reduxState.user.id, genre_id: this.state.genreLikes } });
+        this.props.dispatch({ type: 'ADD_USER_DISLIKES', payload: { user_id: this.props.reduxState.user.id, genre_id: this.state.genreDislikes } });
     }
 
     render() {
