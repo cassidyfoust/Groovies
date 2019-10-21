@@ -16,6 +16,7 @@ class AddMyMovie extends Component {
     state = {
         searchQuery: '',
         searchResults: [],
+        showSuggestions: false
         // searchResultsWithId: [],
         // groupMembers: [this.props.reduxState.user.username],
         // userIds: [this.props.reduxState.user.id]
@@ -35,18 +36,32 @@ class AddMyMovie extends Component {
             .then((response) => {
                 console.log('the search response is:', response)
                 // this.props.dispatch({ type: 'SET_RANDOM', payload: response.data })
-                // this.setState({
-                //     ...this.state,
-                //     imgPath: `https://image.tmdb.org/t/p/w200/${response.data.poster_path}`
-                // })
+                this.setState({
+                    ...this.state,
+                    searchResults: response.data.results
+                })
             })
             .catch(error => {
                 console.log('error in search:', error)
             })
+        this.setState({
+            ...this.state,
+            showSuggestions: true
+        })
     }
 
     render() {
+        let suggestions;
 
+        if (this.state.showSuggestions){
+            suggestions = <><h4>Did you mean:</h4><ul>
+                {this.state.searchResults.map((result) => {
+                    return (
+                        <li>{result.original_title}</li>
+                    )
+                }
+                )}</ul></>
+        }
         return (
     <div>
             <h1>
@@ -63,6 +78,7 @@ class AddMyMovie extends Component {
             <SearchIcon />
         </IconButton>
         </div>
+        <h4>{suggestions}</h4>
         <h3>Movie Title</h3>
         <p>Description: lorem ipsum blah blah blah</p>
         <h3>What did you like about this film?</h3>

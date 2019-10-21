@@ -8,7 +8,7 @@ require('dotenv').config();
 
 router.get('/:search', (req, res) => {
     let queryText = req.params.search
-    let endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${queryText}`
+    let endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${queryText}&original_language=en`
     axios({
         method: 'GET',
         url: endpoint
