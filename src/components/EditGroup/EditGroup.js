@@ -148,10 +148,6 @@ class GroupDetailPage extends Component {
                         }
                         )}
                     </ul>
-                    Total info to change:
-                    Name: {this.state.newGroupName}
-                    Add members: {this.state.addGroupMembers}
-                    Delete members: {this.state.membersToDelete}
                 </div>
                 <div>
                     <button className="backBtn" onClick={this.saveChanges}>Save Changes</button>

@@ -17,8 +17,8 @@ class CreateGroup extends Component {
         id: this.props.match.params.id,
         searchResults: [],
         searchResultsWithId: [],
-        groupMembers: [this.props.reduxState.user.id],
-        userIds: []
+        groupMembers: [this.props.reduxState.user.username],
+        userIds: [this.props.reduxState.user.id]
     }
 
     handleNameChange = (event) => {
