@@ -117,8 +117,7 @@ Customize this ReadMe and the code comments in this project to read less like a 
 
 
 ## Cass Week To-Dos:
-- Suggest a movie - Tuesday/Wednesday
-- Suggest a rewatch - Tuesday/Wednesday
+- Suggest a movie - Tuesday
 - Select unique from Casie
 
 ## Cass To-Dos for Next Weekend:

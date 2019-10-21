@@ -14,7 +14,7 @@ import { flexbox } from '@material-ui/system';
 const MyModal = styled(Modal)({
     position: 'relative',
     width: "300px",
-    height: "450px",
+    height: "500px",
     marginLeft: "30%",
     marginTop: "10%",
     padding: 50,
@@ -55,7 +55,7 @@ class GroupDetailPage extends Component {
     }
 
     generateRewatch = () => {
-        let randomMovieNumber = Math.floor((Math.random() * (this.props.reduxState.groupMovies.length-1)) + 1)
+        let randomMovieNumber = Math.floor(Math.random() * (this.props.reduxState.groupMovies.length))
         this.setState({
             ...this.state,
             rewatchMovie: { title: this.props.reduxState.groupMovies[randomMovieNumber].title, URL: `https://image.tmdb.org/t/p/w200/${this.props.reduxState.groupMovies[randomMovieNumber].poster_path}`},
