@@ -10,10 +10,6 @@ function* createGroup(action) {
         let infoToSend = {group_id: valueToSend.id, members: memberIds}
         console.log('the infoToSend is:', infoToSend)
         yield put({type: 'ADD_GROUP_MEMBERS', payload: infoToSend})
-        // const userGenres = yield axios.get(`/api/get_prefs_from_users/${valueToSend.id}`);
-        // console.log('the user genres are:', userGenres)
-        // yield axios.post(`/api/get_prefs_from_users`, [valueToSend.id, userGenres]);
-        // yield put({ type: 'FETCH_GROUP_PREFERENCES', payload: action.payload.user_id })
     } catch (error) {
         console.log('error while creating group:', error)
     }

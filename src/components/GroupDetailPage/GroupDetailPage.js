@@ -32,6 +32,16 @@ class GroupDetailPage extends Component {
     }
 
     leaveGroup = () => {
+        if (this.props.reduxState.groupDetails.admin === this.props.reduxState.user.id){
+            swal({
+                title: "You are the admin.",
+                text: "You cannot leave this group.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+        }
+        else {
         swal({
             title: "Are you sure?",
             text: "Once you leave a group, you cannot rejoin without admin invitation.",
@@ -49,6 +59,7 @@ class GroupDetailPage extends Component {
                 }
             });
     }
+}
 
 render() {
 
