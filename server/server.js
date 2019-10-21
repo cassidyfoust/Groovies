@@ -23,7 +23,8 @@ const addGroupMembersRouter = require('./routes/add.group.members.router.js');
 const addGroupLikesRouter = require('./routes/add.group.likes.router');
 const addGroupDislikesRouter = require('./routes/add.group.dislikes.router');
 const getGroupMembersRouter = require('./routes/get.group.members.router');
-const editGroupRouter = require('./routes/edit.group.router')
+const editGroupRouter = require('./routes/edit.group.router');
+const searchMoviesRouter = require('./routes/search.movies.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -52,6 +53,7 @@ app.use('/api/add_group_likes', addGroupLikesRouter);
 app.use('/api/add_group_dislikes', addGroupDislikesRouter);
 app.use('/api/get_group_members', getGroupMembersRouter);
 app.use('/api/edit_group', editGroupRouter);
+app.use('/api/search_movies', searchMoviesRouter)
 
 // Serve static files
 app.use(express.static('build'));

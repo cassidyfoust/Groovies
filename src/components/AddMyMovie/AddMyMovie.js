@@ -1,11 +1,53 @@
-import React from 'react';
+import React, {Component} from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import './AddMyMovie.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
-const AddMyMovie = () => (
+const mapStateToProps = reduxState => ({
+    reduxState,
+});
+
+class AddMyMovie extends Component {
+
+    state = {
+        searchQuery: '',
+        searchResults: [],
+        // searchResultsWithId: [],
+        // groupMembers: [this.props.reduxState.user.username],
+        // userIds: [this.props.reduxState.user.id]
+    }
+
+    handleSearchChange = (event) => {
+        this.setState({
+            ...this.state,
+            searchQuery: event.target.value
+        })
+    }
+
+    searchMovies = () => {
+        var queryText = this.state.searchQuery.split(' ').join('+')
+        axios({method: 'GET',
+            url: `/api/search_movies/${queryText}`})
+            .then((response) => {
+                console.log('the search response is:', response)
+                // this.props.dispatch({ type: 'SET_RANDOM', payload: response.data })
+                // this.setState({
+                //     ...this.state,
+                //     imgPath: `https://image.tmdb.org/t/p/w200/${response.data.poster_path}`
+                // })
+            })
+            .catch(error => {
+                console.log('error in search:', error)
+            })
+    }
+
+    render() {
+
+        return (
     <div>
             <h1>
             Add Movie:
@@ -14,10 +56,10 @@ const AddMyMovie = () => (
             <TextField
             id="outlined-name"
             placeholder="Search by movie title"
-            // onChange={handleChange('name')}
+            onChange={(event) => this.handleSearchChange(event)}
             margin="normal"
             variant="outlined"></TextField>
-        <IconButton aria-label="search">
+        <IconButton aria-label="search" onClick={(event) => {this.searchMovies()}}>
             <SearchIcon />
         </IconButton>
         </div>
@@ -61,6 +103,7 @@ const AddMyMovie = () => (
             <button className="addMovieBtn">Add Movie</button><Link to="/MyProfile" className="addMovieBtn">Cancel</Link>
         </div>
     </div>
-);
+)
+}}
 
-export default AddMyMovie;
+export default connect(mapStateToProps)(AddMyMovie);
