@@ -37,3 +37,15 @@
 .back {
   padding-top: 17px;
 }
+
+.carouselImg {
+  width: 150px;
+  margin-left: 20%;
+  margin-top: 10%;
+}
+
+.carousel {
+  width: 250px;
+  display: flex;
+  height: 300px;
+}

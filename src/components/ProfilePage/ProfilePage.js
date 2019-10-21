@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
+import UserMovies from '../UserMovies/UserMovies.js'
 
 const mapStateToProps = reduxState => ({
     reduxState,
@@ -438,12 +439,7 @@ class ProfilePage extends Component {
         </div>
     <p>I Watched:
         {/* {JSON.stringify(this.props.reduxState.userMovies)} */}
-        <ul>
-        {this.props.reduxState.userMovies.map((movie) => {
-           return <li>{movie.title}</li>
-        })}
-                        </ul>
-        (Someday there will be a carousel here)
+        <UserMovies/>
     </p>
     <div>
     <Link to="/AddUserMovie" className="addMovieBtn">Add Movie</Link>
