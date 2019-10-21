@@ -117,7 +117,6 @@ Customize this ReadMe and the code comments in this project to read less like a 
 
 
 ## Cass Week To-Dos:
-- User add movies (and likes/dislikes) - Monday
 - Group add movies (and likes/dislikes) - Monday/Tuesday
 - Suggest a movie - Tuesday/Wednesday
 - Suggest a rewatch - Tuesday/Wednesday
@@ -125,7 +124,7 @@ Customize this ReadMe and the code comments in this project to read less like a 
 
 ## Cass To-Dos for Next Weekend:
 - Clean up CSS codes
-- Styling
+- Styling - Thursday/Friday
 - upload user photos
 - Add in code that prevents users from adding duplicate likes/dislikes
 - check for dupes using logic for users!!!!!!

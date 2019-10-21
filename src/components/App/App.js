@@ -94,7 +94,7 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/AddGroupMovie"
+              path="/AddGroupMovie/:id"
               component={AddGroupMovie}
             />
             <ProtectedRoute

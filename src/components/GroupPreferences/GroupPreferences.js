@@ -9,6 +9,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { connect } from 'react-redux';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
+import GroupMovies from '../GroupMovies/GroupMovies.js'
 
 const mapStateToProps = reduxState => ({
     reduxState,
@@ -67,7 +68,8 @@ class GroupPreferences extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'SELECT_GROUP', payload: this.props.match.params.id });
-        this.props.dispatch({ type: 'FETCH_GROUP_PREFERENCES', payload: this.props.match.params.id})
+        this.props.dispatch({ type: 'FETCH_GROUP_PREFERENCES', payload: this.props.match.params.id});
+        this.props.dispatch({ type: 'FETCH_GROUP_MOVIES', payload: this.props.match.params.id})
     }
 
     handleDelete = (genreId) => {
@@ -377,13 +379,13 @@ class GroupPreferences extends Component {
 
     handleAddLikes = () => {
         console.log('adding genre to group Likes:', this.state.genreLikeName);
-        this.props.dispatch({ type: 'ADD_GROUP_LIKES', payload: { group_id: this.props.match.params.id, genre_id: this.state.genreLikeId } });
+        this.props.dispatch({ type: 'ADD_GROUP_LIKES', payload: { group_id: this.props.match.params.id, genre_id: [this.state.genreLikeId] } });
         this.handleLikesClose();
     }
 
     handleAddDislikes = () => {
         console.log('adding genre to Dislikes:', this.state.genreDislikeName);
-        this.props.dispatch({ type: 'ADD_GROUP_DISLIKES', payload: { group_id: this.props.match.params.id, genre_id: this.state.genreDislikeId } });
+        this.props.dispatch({ type: 'ADD_GROUP_DISLIKES', payload: { group_id: this.props.match.params.id, genre_id: [this.state.genreDislikeId] } });
         this.handleDislikesClose();
     }
 
@@ -468,10 +470,10 @@ class GroupPreferences extends Component {
                         {AddDislikes}
                     </div>
                     <p>We Watched:
-                        Someday there will be a carousel here
+                        <GroupMovies/>
                     </p>
                     <div>
-                        <Link to="/AddGroupMovie" className="addMovieBtn">Add Movie</Link>
+                        <Link to={`/AddGroupMovie/${this.props.match.params.id}`} className="addMovieBtn">Add Movie</Link>
                     </div>
                 </div>
                 <MyModal

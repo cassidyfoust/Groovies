@@ -13,16 +13,17 @@ router.get('/', (req, res) => {
  * POST new group likes to database ("group_genres")
  */
 router.post('/', (req, res) => {
-    console.log(req.body)
-    let queryText = ''
-    let queryValues = [req.body.group_id, req.body.genre_id]
-    queryText = `INSERT INTO "group_genres" ("id", "group_id", "genre_id", "like") VALUES(DEFAULT, $1, $2, false)`;
-    pool.query(queryText, queryValues)
-        .then(() => { res.sendStatus(200); })
-        .catch((err) => {
-            console.log('Error completing UPDATE group liked genres query', err);
-            res.sendStatus(500);
-        });
+    req.body.genre_id.forEach(genre => {
+        let queryText = ''
+        let queryValues = [req.body.group_id, genre]
+        queryText = `INSERT INTO "group_genres" ("id", "group_id", "genre_id", "like") VALUES (DEFAULT, $1, $2, false)`;
+        pool.query(queryText, queryValues)
+            .then(() => { res.sendStatus(200); })
+            .catch((err) => {
+                console.log('Error completing UPDATE group disliked genres query', err);
+                res.sendStatus(500);
+            });
+    })
 });
 
 module.exports = router;

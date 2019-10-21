@@ -26,7 +26,9 @@ const getGroupMembersRouter = require('./routes/get.group.members.router');
 const editGroupRouter = require('./routes/edit.group.router');
 const searchMoviesRouter = require('./routes/search.movies.router');
 const addUserMovieRouter = require('./routes/add.user.movie.route');
-const userMovieJunctionRouter = require('./routes/user.movie.junction.router')
+const userMovieJunctionRouter = require('./routes/user.movie.junction.router');
+const addGroupMovieRouter = require('./routes/add.group.movie.router');
+const groupMovieJunctionRouter = require('./routes/group.movie.junction.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -58,6 +60,8 @@ app.use('/api/edit_group', editGroupRouter);
 app.use('/api/search_movies', searchMoviesRouter);
 app.use('/api/add_user_movie', addUserMovieRouter);
 app.use('/api/movie_user_junction_table', userMovieJunctionRouter);
+app.use('/api/add_group_movie', addGroupMovieRouter);
+app.use('/api/movie_group_junction_table', groupMovieJunctionRouter);
 
 // Serve static files
 app.use(express.static('build'));
