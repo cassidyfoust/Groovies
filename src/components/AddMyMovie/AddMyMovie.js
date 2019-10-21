@@ -16,7 +16,9 @@ class AddMyMovie extends Component {
     state = {
         searchQuery: '',
         searchResults: [],
-        showSuggestions: false
+        showSuggestions: false,
+        showMovieDetails: false,
+        movieToAdd: {}
         // searchResultsWithId: [],
         // groupMembers: [this.props.reduxState.user.username],
         // userIds: [this.props.reduxState.user.id]
@@ -34,7 +36,6 @@ class AddMyMovie extends Component {
         axios({method: 'GET',
             url: `/api/search_movies/${queryText}`})
             .then((response) => {
-                console.log('the search response is:', response)
                 // this.props.dispatch({ type: 'SET_RANDOM', payload: response.data })
                 this.setState({
                     ...this.state,
@@ -50,17 +51,67 @@ class AddMyMovie extends Component {
         })
     }
 
+    selectMovie = (result) => {
+        this.setState({
+            ...this.state,
+            showSuggestions: false,
+            showMovieDetails: true,
+            movieToAdd: result
+        })
+        console.log('the movie to add is:', result)
+    }
+
     render() {
         let suggestions;
+        let movieDetails;
 
         if (this.state.showSuggestions){
             suggestions = <><h4>Did you mean:</h4><ul>
                 {this.state.searchResults.map((result) => {
                     return (
-                        <li>{result.original_title}</li>
+                        <li onClick={(event) => this.selectMovie(result)}>{result.original_title}</li>
                     )
                 }
                 )}</ul></>
+        }
+
+        if (this.state.showMovieDetails) {
+            movieDetails = <> <h3>{this.state.movieToAdd.original_title}</h3>
+                <p>Description: {this.state.movieToAdd.overview}</p>
+                <h3>What did you like about this film?</h3>
+                <div className="genreUpdate"><b>Add Genre:</b>
+                    <div><br></br></div>
+                    <div className="select-wrapper">
+                        <select className="select-css">
+                            <option>
+                                None
+                         </option>
+                            <option>
+                                Example Genre
+                        </option>
+                            <option>
+                                Example Genre 2
+                        </option>
+                        </select>
+                    </div>
+                </div>
+                <h3>What did you dislike about this film?</h3>
+                <div className="genreUpdate"><b>Add Genre:</b>
+                    <div><br></br></div>
+                    <div className="select-wrapper">
+                        <select className="select-css">
+                            <option>
+                                None
+                         </option>
+                            <option>
+                                Example Genre
+                        </option>
+                            <option>
+                                Example Genre 2
+                        </option>
+                        </select>
+                    </div>
+                </div></>
         }
         return (
     <div>
@@ -79,42 +130,7 @@ class AddMyMovie extends Component {
         </IconButton>
         </div>
         <h4>{suggestions}</h4>
-        <h3>Movie Title</h3>
-        <p>Description: lorem ipsum blah blah blah</p>
-        <h3>What did you like about this film?</h3>
-        <div className="genreUpdate"><b>Add Genre:</b>
-            <div><br></br></div>
-            <div className="select-wrapper">
-                <select className="select-css">
-                    <option>
-                        None
-                         </option>
-                        <option>
-                            Example Genre
-                        </option>
-                        <option>
-                            Example Genre 2
-                        </option>
-                </select>
-            </div>
-            </div>
-        <h3>What did you dislike about this film?</h3>
-        <div className="genreUpdate"><b>Add Genre:</b>
-            <div><br></br></div>
-            <div className="select-wrapper">
-                <select className="select-css">
-                    <option>
-                        None
-                         </option>
-                    <option>
-                        Example Genre
-                        </option>
-                    <option>
-                        Example Genre 2
-                        </option>
-                </select>
-            </div>
-        </div>
+       {movieDetails}
         <div className="buttons">
             <button className="addMovieBtn">Add Movie</button><Link to="/MyProfile" className="addMovieBtn">Cancel</Link>
         </div>
