@@ -10,6 +10,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import { styled } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import { flexbox } from '@material-ui/system';
+import axios from 'axios';
 
 const MyModal = styled(Modal)({
     position: 'relative',
@@ -47,11 +48,37 @@ const mapStateToProps = reduxState => ({
 class GroupDetailPage extends Component {
 
     state = {
-        userGenres: this.props.reduxState.userPreferencesForGroup,
         id: this.props.match.params.id,
         suggestRewatchOpen: false,
         suggestNewMovieOpen: false,
-        rewatchMovie: ''
+        rewatchMovie: '',
+        randomGenreId: 0,
+        randomMovie: ''
+    }
+
+    generateNewMovie = () => {
+        let randomGenreNumber = Math.floor(Math.random() * (this.props.reduxState.groupPreferences.length))
+        this.setState({
+            ...this.state,
+            randomGenreId: this.props.reduxState.groupPreferences[randomGenreNumber],
+            suggestNewMovieOpen: true
+        })
+        console.log('the random genre is:', this.props.reduxState.groupPreferences[randomGenreNumber])
+        axios({
+            method: 'GET',
+            url: `/api/random_movie/${this.state.randomGenreId.tmdb}`
+        })
+            .then((response) => {
+                console.log('the response is:', response)
+                this.props.dispatch({ type: 'SET_RANDOM', payload: response.data })
+                this.setState({
+                    ...this.state,
+                    imgPath: `https://image.tmdb.org/t/p/w200/${response.data.poster_path}`
+                })
+            })
+            .catch(error => {
+                console.log('error:', error)
+            })
     }
 
     generateRewatch = () => {
@@ -60,13 +87,6 @@ class GroupDetailPage extends Component {
             ...this.state,
             rewatchMovie: { title: this.props.reduxState.groupMovies[randomMovieNumber].title, URL: `https://image.tmdb.org/t/p/w200/${this.props.reduxState.groupMovies[randomMovieNumber].poster_path}`},
             suggestRewatchOpen: true
-        })
-    }
-
-    handleNewMovieOpen = () => {
-        this.setState({
-            ...this.state,
-            suggestNewMovieOpen: true
         })
     }
 
@@ -86,7 +106,8 @@ class GroupDetailPage extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'SELECT_GROUP', payload: this.props.match.params.id });
-        this.props.dispatch({ type: 'FETCH_GROUP_MOVIES', payload: this.props.match.params.id })
+        this.props.dispatch({ type: 'FETCH_GROUP_PREFERENCES', payload: this.props.match.params.id });
+        this.props.dispatch({ type: 'FETCH_GROUP_MOVIES', payload: this.props.match.params.id });
     }
 
     groupPrefs = () => {
@@ -156,7 +177,7 @@ render() {
         <div className="buttons">
             {edit}
             <button className="modal-btn" onClick={this.groupPrefs}>View Group Preferences</button>
-            <button className="modal-btn" onClick={this.handleNewMovieOpen}>Suggest a New Movie</button>
+            <button className="modal-btn" onClick={this.generateNewMovie}>Suggest a New Movie</button>
             <button className="modal-btn" onClick={this.generateRewatch}>Suggest a Rewatch</button>
         </div>
     </div>

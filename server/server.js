@@ -29,6 +29,7 @@ const addUserMovieRouter = require('./routes/add.user.movie.route');
 const userMovieJunctionRouter = require('./routes/user.movie.junction.router');
 const addGroupMovieRouter = require('./routes/add.group.movie.router');
 const groupMovieJunctionRouter = require('./routes/group.movie.junction.router');
+const randomMovieRouter = require('./routes/random.movie.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -62,6 +63,7 @@ app.use('/api/add_user_movie', addUserMovieRouter);
 app.use('/api/movie_user_junction_table', userMovieJunctionRouter);
 app.use('/api/add_group_movie', addGroupMovieRouter);
 app.use('/api/movie_group_junction_table', groupMovieJunctionRouter);
+app.use('/api/random_movie', randomMovieRouter)
 
 // Serve static files
 app.use(express.static('build'));
