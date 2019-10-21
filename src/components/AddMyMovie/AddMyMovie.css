@@ -82,3 +82,9 @@
     margin-top: 100px;
     margin-right: 90%;
 }
+
+.search-results {
+	display: flex;
+	flex-wrap: wrap;
+	/* width: 60%; */
+}

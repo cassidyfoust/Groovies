@@ -6,6 +6,25 @@ import './AddMyMovie.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { styled } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import { flexbox } from '@material-ui/system';
+
+const MyCard = styled(Card)({
+    // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    border: 0,
+    borderRadius: 3,
+    // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    // // color: 'white',
+    // height: 60,
+    width: 220,
+    paddingLeft: 7,
+    paddingTop: 5,
+    margin: 5,
+    fontSize: 12,
+    display: flexbox,
+    textAlign: "center"
+});
 
 const mapStateToProps = reduxState => ({
     reduxState,
@@ -66,13 +85,14 @@ class AddMyMovie extends Component {
         let movieDetails;
 
         if (this.state.showSuggestions){
-            suggestions = <><h4>Did you mean:</h4><ul>
+            suggestions = <><h4>Did you mean:</h4><div className="search-results">
                 {this.state.searchResults.map((result) => {
+                    let imgURL = `https://image.tmdb.org/t/p/w200/${result.poster_path}`
                     return (
-                        <li onClick={(event) => this.selectMovie(result)}>{result.original_title}</li>
+                        <MyCard onClick={(event) => this.selectMovie(result)}><img src={imgURL}></img>{result.original_title}</MyCard>
                     )
                 }
-                )}</ul></>
+                )}</div></>
         }
 
         if (this.state.showMovieDetails) {
