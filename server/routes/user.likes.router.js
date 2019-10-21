@@ -14,8 +14,9 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
     console.log(req.body)
+    req.body.genre_id.forEach(genre => {
     let queryText = ''
-    let queryValues = [req.body.user_id, req.body.genre_id]
+    let queryValues = [req.body.user_id, genre]
     queryText = `INSERT INTO "user_genres" ("id", "user_id", "genre_id", "like") VALUES(DEFAULT, $1, $2, true)`;
     console.log(queryText, queryValues)
     pool.query(queryText, queryValues)
@@ -24,6 +25,7 @@ router.post('/', (req, res) => {
             console.log('Error completing UPDATE user liked genres query', err);
             res.sendStatus(500);
         });
+    })
 });
 
 module.exports = router;
