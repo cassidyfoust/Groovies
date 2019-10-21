@@ -5,8 +5,22 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-
+router.get('/:id', (req, res) => {
+    let queryText = ''
+    let queryValues = [req.params.id]
+    queryText = `SELECT "title" FROM "user_movies"
+    JOIN "movies" on "movies".id = "user_movies".movie_id
+    JOIN "user" on "user".id = "user_movies".user_id
+    WHERE "user".id = $1;`;
+    console.log(queryText, queryValues)
+    pool.query(queryText, queryValues)
+        .then(result => {
+            console.log('the result is:', result.rows)
+            // Sends back the results in an object
+            res.send(result.rows)})
+        .catch((err) => {
+            console.log('Error completing SElECT FROM JUNCTION TABLE', err)
+        })
 });
 
 /**

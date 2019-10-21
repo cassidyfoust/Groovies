@@ -7,7 +7,7 @@ function* fetchMovieId(action) {
         const response = yield axios.get(`/api/add_user_movie/${action.payload.queryText}`)
         console.log('get movie id response:', response)
         axios.post(`/api/movie_user_junction_table`, {movie_id: response.data.id, user_id: action.payload.user_id})
-        // yield put({ type: 'FETCH_USER_GENRES', payload: action.payload.user_id });
+        yield put({type:'FETCH_USER_MOVIES', payload: action.payload.user_id})
     } catch (error) {
         console.log('error while posting user movie:', error)
     }

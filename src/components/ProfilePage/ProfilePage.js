@@ -67,6 +67,7 @@ class ProfilePage extends Component {
 
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_USER_GENRES', payload: this.props.reduxState.user.id });
+        this.props.dispatch({ type: 'FETCH_USER_MOVIES', payload: this.props.reduxState.user.id })
     }
 
     handleDelete = (genreId) => {
@@ -436,7 +437,13 @@ class ProfilePage extends Component {
             </MyCard>
         </div>
     <p>I Watched:
-        Someday there will be a carousel here
+        {/* {JSON.stringify(this.props.reduxState.userMovies)} */}
+        <ul>
+        {this.props.reduxState.userMovies.map((movie) => {
+           return <li>{movie.title}</li>
+        })}
+                        </ul>
+        (Someday there will be a carousel here)
     </p>
     <div>
     <Link to="/AddUserMovie" className="addMovieBtn">Add Movie</Link>

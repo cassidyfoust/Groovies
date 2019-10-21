@@ -369,8 +369,7 @@ class AddMyMovie extends Component {
         else if (this.state.genreDislikes !== []){
             this.props.dispatch({ type: 'ADD_USER_DISLIKES', payload: { user_id: this.props.reduxState.user.id, genre_id: this.state.genreDislikes } });
         }
-        // create movie database
-        // create user_movie database
+        this.props.history.push('/MyProfile')
     }
 
     render() {
