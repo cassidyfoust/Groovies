@@ -6,7 +6,7 @@ function* deleteFromGroup(action) {
         let deleteInfo = `${action.payload.id}-${action.payload.removeUserIds}`
         const response = yield axios.delete(`/api/edit_group/${deleteInfo}`)
     } catch (error) {
-        console.log('error while creating group:', error)
+        console.log('error while deleting group member group:', error)
     }
 }
 

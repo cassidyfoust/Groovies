@@ -121,7 +121,7 @@ Customize this ReadMe and the code comments in this project to read less like a 
 - Group add movies (and likes/dislikes)
 - Suggest a movie
 - Suggest a rewatch
-- Edit group members/name
+- Leave group button (WITH confirmation)
 
 ## Cass To-Dos for Next Week:
 - Clean up CSS codes
@@ -132,3 +132,4 @@ Customize this ReadMe and the code comments in this project to read less like a 
 - update group likes and dislikes when user adds likes or dislikes (post)
 - add failsafe where user cannot delete themselves from a group AND cannot add member who is already in the group
 - add confirmations and stuff
+- delete group?
