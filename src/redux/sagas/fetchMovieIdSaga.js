@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { put } from 'redux-saga/effects';
 
-function* addUserMovie(action) {
+function* fetchMovieId(action) {
     try {
-        axios.post(`/api/add_user_movie`, action.payload)
-        var queryText = action.payload.original_title.split(' ').join('+')
-        yield put({type: 'FETCH_MOVIE_ID', payload: queryText})
+        const response = yield axios.get(`/api/add_user_movie/${action.payload}`)
+        console.log('get movie id response:', response.data[0].id)
         // yield axios.post(`/api/movie_user_junction_table`)
         // yield put({ type: 'FETCH_USER_GENRES', payload: action.payload.user_id });
     } catch (error) {
@@ -13,4 +12,4 @@ function* addUserMovie(action) {
     }
 }
 
-export default addUserMovie;
+export default fetchMovieId;

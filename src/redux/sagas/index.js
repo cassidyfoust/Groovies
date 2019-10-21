@@ -20,6 +20,7 @@ import editGroupSaga from './editGroupSaga'
 import deleteFromGroup from './deleteFromGroupSaga';
 import changeGroupName from './changeGroupNameSaga';
 import addUserMovie from './addUserMovieSaga';
+import fetchMovieId from './fetchMovieIdSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -47,6 +48,7 @@ export default function* rootSaga() {
   yield takeEvery('DELETE_FROM_GROUP', deleteFromGroup);
   yield takeEvery('CHANGE_GROUP_NAME', changeGroupName);
   yield takeEvery('ADD_USER_MOVIE', addUserMovie);
+  yield takeEvery('FETCH_MOVIE_ID', fetchMovieId);
   yield all([
     loginSaga(),
     registrationSaga(),

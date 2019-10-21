@@ -5,12 +5,20 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-
+router.get('/:title', (req, res) => {
+    let queryText = ''
+    let queryValues = req.params.title.split('+').join(' ')
+    queryText = `SELECT "id" FROM "movies" WHERE "title" LIKE '%' || $1 || '%';`;
+    console.log(queryValues, queryText)
+    pool.query(queryText, [queryValues])
+        .then((result) => { res.send(result.rows); })
+        .catch((err) => {
+            console.log('Error completing SEARCH NEW USER MOVIE', err)
+        })
 });
 
 /**
- * POST user likes to database ("user_genres")
+ * POST new movie to "movies" table in database
  */
 router.post('/', (req, res) => {
         let queryText = ''
