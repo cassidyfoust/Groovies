@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/:id', (req, res) => {
     console.log('in the get for group preferences')
-const queryText = `SELECT "genre_name", "genre_id", "group_genres".id, "tmdb", "like" FROM "group"
+const queryText = `SELECT DISTINCT "genre_name", "genre_id", "group_genres".id, "tmdb", "like" FROM "group"
 JOIN "group_genres" ON "group".id = "group_genres".group_id
 JOIN "genres" ON "genres".id = "group_genres".genre_id
 WHERE "group".id=$1`

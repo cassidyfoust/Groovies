@@ -117,14 +117,12 @@ Customize this ReadMe and the code comments in this project to read less like a 
 
 
 ## Cass Week To-Dos:
-- Select unique from Casie
+- Figure out why post new movie isn't working????
 
 ## Cass To-Dos for Next Weekend:
 - Clean up CSS codes
 - Styling - Thursday/Friday
 - upload user photos
-- Add in code that prevents users from adding duplicate likes/dislikes
-- check for dupes using logic for users!!!!!!
 - update group likes and dislikes when user adds likes or dislikes (post)
 - add failsafe where user cannot delete themselves from a group AND cannot add member who is already in the group
 - add confirmations and stuff

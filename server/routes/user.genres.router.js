@@ -6,7 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/:id', (req, res) => {
-    const queryText = `SELECT "username", "genre_name", "like", "genre_id" FROM "user"
+    const queryText = `SELECT DISTINCT "genre_name", "username", "like", "genre_id" FROM "user"
     JOIN "user_genres" ON "user".id = "user_genres".user_id
     JOIN "genres" ON "genres".id = "user_genres".genre_id
     WHERE "user".id=$1;`

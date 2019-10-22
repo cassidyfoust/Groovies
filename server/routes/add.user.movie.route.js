@@ -10,7 +10,7 @@ router.get('/:title', (req, res) => {
     let queryValues = req.params.title.split('+').join(' ')
     queryText = `SELECT "id" FROM "movies" WHERE "title" LIKE '%' || $1 || '%';`;
     pool.query(queryText, [queryValues])
-        .then((result) => { console.log(result.rows[0]); res.send(result.rows[0]); })
+        .then((result) => { console.log('the get result is:', result.rows); res.send(result.rows); })
         .catch((err) => {
             console.log('Error completing SEARCH NEW USER MOVIE', err)
         })
@@ -23,9 +23,8 @@ router.post('/', (req, res) => {
         let queryText = ''
         let queryValues = [req.body.original_title, req.body.overview, req.body.poster_path]
         queryText = `INSERT INTO "movies" ("title", "description", "poster_path") VALUES ($1, $2, $3);`;
-        console.log(queryText, queryValues)
         pool.query(queryText, queryValues)
-            .then(() => { })
+            .then((res.sendStatus(200)))
             .catch((err) => {
                 console.log('Error completing ADD NEW USER MOVIE', err)
             })

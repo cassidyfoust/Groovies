@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/:id', (req, res) => {
     console.log('get route hit')
-    const queryText = `SELECT "genres".genre_name, "genres".id, "genres".tmdb, "user".username, "user_genres".like FROM "user"
+    const queryText = `SELECT DISTINCT "genres".genre_name, "genres".id, "genres".tmdb, "user".username, "user_genres".like FROM "user"
 JOIN "user_genres" ON "user".id = "user_genres".user_id
 JOIN "genres" ON "genres".id = "user_genres".genre_id
 JOIN "user_group" ON "user".id = "user_group".user_id
