@@ -151,17 +151,13 @@ render() {
     let edit;
 
     if (this.props.reduxState.groupDetails.admin === this.props.reduxState.user.id){
-        edit = <button className="modal-btn" onClick={this.editGroup}>Edit Group</button>
+        edit = <button className="groupBtns" onClick={this.editGroup}>Edit Group</button>
     }
 
     return (
     <>
-    <div>
-        <div className="back">
-            <Link to="/MyGroups" className="backBtn">Back</Link>
-            <button className="leaveBtn" onClick={this.leaveGroup}>Leave Group</button></div>
-        <div><br></br>
-                <br></br><h1>{this.props.reduxState.groupDetails.name}</h1></div>
+    <div className="groupDetails">
+        <h1 className="header-2">{this.props.reduxState.groupDetails.name}</h1>
         <div className="pics">
                     {this.props.reduxState.groupDetails.details.map((member) => {
                         return (
@@ -174,11 +170,20 @@ render() {
         </div>
         <div className="buttons">
             {edit}
-            <button className="modal-btn" onClick={this.groupPrefs}>View Group Preferences</button>
-            <button className="modal-btn" onClick={this.generateNewMovie}>Suggest a New Movie</button>
-            <button className="modal-btn" onClick={this.generateRewatch}>Suggest a Rewatch</button>
+            </div>
+            <div className="buttons">
+            <button className="groupBtns" onClick={this.groupPrefs}>View Group Preferences</button>
+            </div>
+            <div className="buttons">
+            <button className="groupBtns" onClick={this.generateNewMovie}>Suggest a New Movie</button>
+            </div>
+            <div className="buttons">
+                    <button className="groupBtns" onClick={this.generateRewatch}>Suggest a Rewatch</button>
+            </div>
+            <div className="buttons">
+                    <button className="groupBtns" onClick={this.leaveGroup}>Leave Group</button>
+            </div>
         </div>
-    </div>
         <MyModal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"

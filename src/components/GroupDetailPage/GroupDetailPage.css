@@ -1,22 +1,33 @@
-/* .leaveBtn {
-  background-color: #00acb0;
+.groupDetails {
+    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+.groupBtns {
+  display: flex;
+  justify-content: center;
+  background-color: #F9525A;
   border-radius: 4px;
   color: #f8f8f8;
-  height: 40px;
-  margin-top: 20px;
-  margin-left: 5px;
-  width: 100px;
+  min-height: 30px;
+  width: 210px;
   outline:0;
   cursor: pointer;
-  text-align: center;
+  margin: 0 auto;
   text-decoration: none;
-  font-size: 14px;
-  float: right;
+    padding: 5px;
+    border-bottom:1px solid #444; 
+    cursor: pointer;
+    font-size: 24px;
 }
 
 .pics {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .groupPics {
@@ -46,4 +57,17 @@
   flex-direction: column;
   text-align: center;
   margin-bottom: 20px;
-} */
+}
+
+.header-2 {
+  padding-top: 2%;
+  font-size: 64px;
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  padding: 3px;
+}
