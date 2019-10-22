@@ -8,29 +8,44 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#welcome {
     margin-top: 50%;
+    font-size: 64px;
 }
 
 .profPic {
     border-radius: 50%;
     width: 120px;
-    margin-left: 27%;
-    margin-bottom: 15px;
+    margin: 0 auto;
+    border: 2px solid #594C51;
 }
 
-.newBtn {
-  display: flex;
-  margin-bottom: 5px;
-  background-color: #00acb0;
+.profBtn {
+  background-color: #F9525A;
   border-radius: 4px;
-  padding: 10px;
-  width: 77px;
   color: #f8f8f8;
-  height: 18px;
-  margin-left: 25px;
+  min-height: 30px;
+  width: 100px;
   outline:0;
   cursor: pointer;
-  text-align: center;
+  margin: 0 auto;
   text-decoration: none;
-  font-size: 14px;
+    padding: 5px;
+    text-align: center;
+    border-bottom:1px solid #444; 
+    cursor: pointer;
+}
+
+.profBtn:hover {
+  background-color: rgb(205, 50, 58);
+  text-decoration: none;
+  text-align: center;
+  color: #f8f8f8;
+}
+
+.logout-profile {
+    display: flex;
+    margin: 0 auto;
 }

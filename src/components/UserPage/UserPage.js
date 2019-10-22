@@ -15,10 +15,12 @@ const UserPage = (props) => (
     </h1>
     <img src={TestImage} className="profPic"></img>
     <div className="buttons">
-      <Link to="/MyProfile" className="newBtn">My Profile</Link>
-      <Link to="/MyGroups" className="newBtn">My Groups</Link>
+      <Link to="/MyProfile" className="profBtn">My Profile</Link>
+      <Link to="/MyGroups" className="profBtn">My Groups</Link>
     </div>
+    <div className="logout-profile">
       <LogOutButton className="log-in" />
+    </div>
   </div>
 );
 

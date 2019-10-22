@@ -128,3 +128,11 @@ Customize this ReadMe and the code comments in this project to read less like a 
 - add confirmations and stuff
 - delete group?
 - omit group dislikes from search
+
+## Color Scheme:
+
+- teal: #82C9C1
+- brown: #594C51
+- orange: #FAB564
+- pink: #F9525A
+- tan: #F1EDBF
