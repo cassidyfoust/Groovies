@@ -1,30 +1,25 @@
-/* .back {
-  padding-top: 17px;
+.user-groups {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
 }
 
-.backBtn {
-background-color: #00acb0;
+.groupsBtns {
+  display: flex;
+  justify-content: center;
+  background-color: #F9525A;
   border-radius: 4px;
   color: #f8f8f8;
-  min-height: 20px;
-  width: 200px;
+  min-height: 30px;
+  width: 170px;
   outline:0;
-  margin-left: 5px;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 14px;
+  cursor: pointer;
+  margin: 0 auto;
+  text-decoration: none;
+    padding: 5px;
+    border-bottom:1px solid #444; 
+    cursor: pointer;
+    font-size: 24px;
 }
-
-.newBtn {
-    background-color: #00acb0;
-  border-radius: 4px;
-  color: #f8f8f8;
-  min-height: 20px;
-  width: 150px;
-  text-align: center;
-  outline:0;
-  margin-left: 5px;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 14px;
-} */

@@ -2,12 +2,12 @@
   display: flex;
   justify-content: flex-end;
   overflow: hidden;
-  background-color: #F9525A;
+  /* background-color: #F9525A; */
 }
 
 .navLinks {
   border-radius: 4px;
-  color: #f8f8f8;
+  color: #594C51;
   min-height: 20px;
   width: 100px;
   outline:0;

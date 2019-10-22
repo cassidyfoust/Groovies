@@ -22,16 +22,15 @@ const MyListItem = styled(ListItem)({
     background: '#00acb0',
     border: 0,
     '&:hover': {
-        background: 'white'
+        background: '#F1EDBF'
     },
-    // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    // color: 'white',
-    height: 26,
-    width: "100%",
-    paddingLeft: 7,
-    paddingTop: 5,
-    fontSize: 12,
-    textAlign: "center"
+    boxShadow: '0 1px 2px 1px rgba(255, 105, 135, .3)',
+    width: "30%",
+    margin: "0 auto",
+    paddingLeft: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    fontSize: 24,
 });
 
 class MyGroupsPage extends Component{ 
@@ -47,16 +46,13 @@ class MyGroupsPage extends Component{
 
     render() {
         return (
-    <div>
-        <div className="back">
-            <Link to="/home" className="backBtn">Back</Link>
-        </div>
+    <div className="user-groups">
         <div>
-        <h1>
+        <h1 className="header-1">
             My Groups:
         </h1>
         <div>
-            <Link to="/CreateGroup" className="newBtn">Create New Group</Link>
+            <Link to="/CreateGroup" className="groupsBtns">Create New Group</Link>
         </div>
         <MyList>
             {this.props.reduxState.groups.map((group) => {

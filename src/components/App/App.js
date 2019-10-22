@@ -33,7 +33,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="nav-wrapper">
+        <div>
           <NavBar />
         </div>
         <div>
