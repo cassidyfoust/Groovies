@@ -20,7 +20,7 @@ const UserPage = (props) => (
     </div>
     <div className="buttons">
       <div className="margins">
-      <Link to="/MyProfile" className="profBtn">My Profile</Link>
+      <Link to="/MyProfile" className="profBtn">My Preferences</Link>
       </div>
       <div>
       <Link to="/MyGroups" className="profBtn">My Groups</Link>

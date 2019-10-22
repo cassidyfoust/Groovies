@@ -29,13 +29,14 @@ const MyModal = styled(Modal)({
 })
 
 const MyCard = styled(Card)({
-    // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    // background: 'linear-gradient(175deg, #F1EDBF 20%, #FF8E53 22%)',
+    background: '#FF8E53',
     border: 0,
     borderRadius: 3,
-    // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    boxShadow: '0 2px 4px 1px #594C51',
     // color: 'white',
-    height: 32,
-    width: 90,
+    height: 40,
+    width: 120,
     paddingLeft: 7,
     paddingTop: 5,
     margin: 5,
@@ -389,14 +390,12 @@ class ProfilePage extends Component {
     render() {
         return (
             <>
-            <div>
-        <div className="back">
-        <Link to="/home" className="backBtn">Back</Link>
-        </div>
-        <h1>
+            <div className="user-preferences">
+        <h1 className="header-1">
             My Preferences:
     </h1>
-    <p>I Like:</p>
+    <div className="preference-wrapper">
+    <h3>I Like:</h3>
         <div className="prefs">
                     {this.props.reduxState.userGenres.map((genre) => {
                         if(genre.like === true){
@@ -416,7 +415,7 @@ class ProfilePage extends Component {
                         </NewIconBtn>
                     </MyCard>
         </div>
-    <p>I Dislike:</p>
+    <h3>I Dislike:</h3>
         <div className="prefs">
                     {this.props.reduxState.userGenres.map((genre) => {
                         if (genre.like === false) {
@@ -437,12 +436,14 @@ class ProfilePage extends Component {
                 </NewIconBtn>
             </MyCard>
         </div>
-    <p>I Watched:
+    <h3>I Watched:
         {/* {JSON.stringify(this.props.reduxState.userMovies)} */}
         <UserMovies/>
-    </p>
+    </h3>
     <div>
     <Link to="/AddUserMovie" className="addMovieBtn">Add Movie</Link>
+    {/* <Link to="/home" className="backBtn">Back</Link> */}
+    </div>
     </div>
     </div>
 

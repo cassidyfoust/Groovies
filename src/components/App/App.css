@@ -1,12 +1,11 @@
 body {
     font-family: 'Big Shoulders Text', cursive;
-    display: flex;
-    justify-content: center;
     background-image: URL('./Groovies.png');
     background-size: 100%;
     background-repeat: no-repeat;
     background-color: #82C9C1;
     color: #594C51;
+    margin: 0 auto;
 }
 
 .alert {
@@ -60,4 +59,9 @@ input {
     align-content: flex-end;
     margin-top: 100%;
     justify-content: center;
+}
+
+.nav-wrapper {
+    background-color: #F9525A;
+    width: 100%;
 }

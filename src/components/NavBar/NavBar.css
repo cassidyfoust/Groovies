@@ -1,0 +1,27 @@
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+  background-color: #F9525A;
+}
+
+.navLinks {
+  border-radius: 4px;
+  color: #f8f8f8;
+  min-height: 20px;
+  width: 100px;
+  outline:0;
+  cursor: pointer;
+  margin: 5px;
+  text-decoration: none;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.navLinks:hover {
+  background-color: rgb(205, 50, 58);
+  text-decoration: none;
+  text-align: center;
+  color: #f8f8f8;
+}
