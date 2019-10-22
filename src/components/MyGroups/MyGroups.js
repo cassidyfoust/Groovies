@@ -48,7 +48,7 @@ class MyGroupsPage extends Component{
         return (
     <div className="user-groups">
         <div>
-        <h1 className="header-1">
+        <h1 className="header-2">
             My Groups:
         </h1>
         <div>
@@ -76,7 +76,9 @@ class MyGroupsPage extends Component{
                         })}
             </MyList>
         </div>
+        <div className="groups-comments">
         (A star indicates you are the owner of that group.)
+        </div>
     </div>
 )}
  }
