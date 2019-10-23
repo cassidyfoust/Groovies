@@ -8,25 +8,13 @@ import { flexbox } from '@material-ui/system';
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
+import {Modal} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 import UserMovies from '../UserMovies/UserMovies.js'
 
 const mapStateToProps = reduxState => ({
     reduxState,
 });
-
-const MyModal = styled(Modal)({
-    position: 'relative',
-    width: "30%",
-    height: "30%",
-    marginLeft: "30%",
-    marginTop: "10%",
-    padding: 50,
-    backgroundColor: '#ffffff',
-    color: '#000000',
-    border: '1px solid #000'
-})
 
 const MyCard = styled(Card)({
     // background: 'linear-gradient(175deg, #F1EDBF 20%, #FF8E53 22%)',
@@ -446,163 +434,155 @@ class ProfilePage extends Component {
     </div>
     </div>
     </div>
-
-            <MyModal
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                open={this.state.likesIsOpen}
-                onClose={this.handleLikesClose}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                    timeout: 500,
-                }}
-            >
-                    <div>
-                        <h2>Add a genre to your likes:</h2>
-                        <select onChange={this.handleLikeChange}>
-                            <option>
+                <Modal show={this.state.likesIsOpen} onHide={this.handleLikesClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title><h2>Add a genre to your likes:</h2></Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body><select onChange={this.handleLikeChange}>
+                        <option>
+                        </option>
+                        <option>
+                            Action
                             </option>
-                            <option>
-                                Action
+                        <option>
+                            Adventure
                             </option>
-                            <option>
-                                Adventure
+                        <option>
+                            Animation
                             </option>
-                            <option>
-                                Animation
+                        <option>
+                            Comedy
                             </option>
-                            <option>
-                                Comedy
+                        <option>
+                            Crime
                             </option>
-                            <option>
-                                Crime
+                        <option>
+                            Documentary
                             </option>
-                            <option>
-                                Documentary
+                        <option>
+                            Drama
                             </option>
-                            <option>
-                                Drama
+                        <option>
+                            Family
                             </option>
-                            <option>
-                                Family
+                        <option>
+                            Fantasy
                             </option>
-                            <option>
-                                Fantasy
+                        <option>
+                            History
                             </option>
-                            <option>
-                                History
+                        <option>
+                            Horror
                             </option>
-                            <option>
-                                Horror
+                        <option>
+                            Music
                             </option>
-                            <option>
-                                Music
+                        <option>
+                            Mystery
                             </option>
-                            <option>
-                                Mystery
+                        <option>
+                            Romance
                             </option>
-                            <option>
-                                Romance
+                        <option>
+                            Science Fiction
                             </option>
-                            <option>
-                                Science Fiction
+                        <option>
+                            TV Movie
                             </option>
-                            <option>
-                                TV Movie
+                        <option>
+                            Thriller
                             </option>
-                            <option>
-                                Thriller
+                        <option>
+                            War
                             </option>
-                            <option>
-                                War
+                        <option>
+                            Western
                             </option>
-                            <option>
-                                Western
+                    </select>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.handleLikesClose}>
+                            Close
+          </Button>
+                        <Button variant="primary" onClick={this.handleAddLikes}>
+                            Add
+          </Button>
+                    </Modal.Footer>
+                </Modal>
+                <Modal show={this.state.dislikesIsOpen} onHide={this.handleDislikesClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title><h2>Add a genre to your dislikes:</h2></Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body><select onChange={this.handleDislikeChange}>
+                        <option>
+                        </option>
+                        <option>
+                            Action
                             </option>
-                        </select>
-                        <button onClick={this.handleAddLikes}>Add</button>
-                        <button onClick={this.handleLikesClose}>Cancel</button>
-                    </div>
-            </MyModal>
-                <MyModal
-                    aria-labelledby="transition-modal-title"
-                    aria-describedby="transition-modal-description"
-                    open={this.state.dislikesIsOpen}
-                    onClose={this.handleDislikesClose}
-                    closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                        timeout: 500,
-                    }}
-                >
-                    <div>
-                        <h2>Add a genre to your dislikes:</h2>
-                        <select onChange={this.handleDislikeChange}>
-                            <option>
+                        <option>
+                            Adventure
                             </option>
-                            <option>
-                                Action
+                        <option>
+                            Animation
                             </option>
-                            <option>
-                                Adventure
+                        <option>
+                            Comedy
                             </option>
-                            <option>
-                                Animation
+                        <option>
+                            Crime
                             </option>
-                            <option>
-                                Comedy
+                        <option>
+                            Documentary
                             </option>
-                            <option>
-                                Crime
+                        <option>
+                            Drama
                             </option>
-                            <option>
-                                Documentary
+                        <option>
+                            Family
                             </option>
-                            <option>
-                                Drama
+                        <option>
+                            Fantasy
                             </option>
-                            <option>
-                                Family
+                        <option>
+                            History
                             </option>
-                            <option>
-                                Fantasy
+                        <option>
+                            Horror
                             </option>
-                            <option>
-                                History
+                        <option>
+                            Music
                             </option>
-                            <option>
-                                Horror
+                        <option>
+                            Mystery
                             </option>
-                            <option>
-                                Music
+                        <option>
+                            Romance
                             </option>
-                            <option>
-                                Mystery
+                        <option>
+                            Science Fiction
                             </option>
-                            <option>
-                                Romance
+                        <option>
+                            TV Movie
                             </option>
-                            <option>
-                                Science Fiction
+                        <option>
+                            Thriller
                             </option>
-                            <option>
-                                TV Movie
+                        <option>
+                            War
                             </option>
-                            <option>
-                                Thriller
+                        <option>
+                            Western
                             </option>
-                            <option>
-                                War
-                            </option>
-                            <option>
-                                Western
-                            </option>
-                        </select>
-                        <button onClick={this.handleAddDislikes}>Add</button>
-                        <button onClick={this.handleDislikesClose}>Cancel</button>
-                    </div>
-                </MyModal>
+                    </select></Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.handleDislikesClose}>
+                            Close
+          </Button>
+                        <Button variant="primary" onClick={this.handleAddDislikes}>
+                            Add
+          </Button>
+                    </Modal.Footer>
+                </Modal>
             </>
 
 );
