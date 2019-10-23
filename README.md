@@ -120,6 +120,7 @@ Customize this ReadMe and the code comments in this project to read less like a 
 - Figure out why post new movie isn't working????
 - Figure out update
 - STYLE MODALS!!!!!
+- style select dropdowns
 
 ## Cass To-Dos for Next Weekend:
 - Clean up CSS codes

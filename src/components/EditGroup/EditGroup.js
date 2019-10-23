@@ -116,15 +116,16 @@ class GroupDetailPage extends Component {
 
             <div>
                 <div><br></br>
-                    <br></br><h1>Edit {this.props.reduxState.groupDetails.name}</h1></div>
-                <div>
+                    <br></br><h1 className="header-1">Edit {this.props.reduxState.groupDetails.name}</h1></div>
+                <div className="edit-group">
+                    <div>
                     <h3>Change Group Name:</h3>
                     <input
                         id="outlined-name"
                         placeholder={this.props.reduxState.groupDetails.name}
                         onChange={(event) => this.handleNameChange(event)}
                         className="search-box" />
-                </div>
+                    </div>
                 <h3>Add Members:</h3>
                 <div>
                     <AutoComplete options={this.state.searchResults} handleClick={this.addGroupMember} />
@@ -152,9 +153,10 @@ class GroupDetailPage extends Component {
                         )}
                     </ul>
                 </div>
-                <div>
-                    <button className="backBtn" onClick={this.saveChanges}>Save Changes</button>
-                    <button onClick={this.cancelBtn} className="backBtn">Cancel</button>
+                </div>
+                <div className="button-wrapper">
+                    <button className="editGroupBtns" onClick={this.saveChanges}>Save Changes</button>
+                    <button onClick={this.cancelBtn} className="editGroupBtns">Cancel</button>
                 </div>
             </div>
         )
