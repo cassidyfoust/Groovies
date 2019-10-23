@@ -171,16 +171,16 @@ render() {
         <div className="buttons">
             {edit}
             </div>
-            <div className="buttons">
+            <div className="detail-buttons">
             <button className="groupBtns" onClick={this.groupPrefs}>View Group Preferences</button>
             </div>
-            <div className="buttons">
+            <div className="detail-buttons">
             <button className="groupBtns" onClick={this.generateNewMovie}>Suggest a New Movie</button>
             </div>
-            <div className="buttons">
+            <div className="detail-buttons">
                     <button className="groupBtns" onClick={this.generateRewatch}>Suggest a Rewatch</button>
             </div>
-            <div className="buttons">
+            <div className="detail-buttons">
                     <button className="groupBtns" onClick={this.leaveGroup}>Leave Group</button>
             </div>
         </div>

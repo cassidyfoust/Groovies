@@ -27,7 +27,6 @@
 }
 
 .profBtn {
-  display: flex;
   justify-content: center;
   background-color: #F9525A;
   border-radius: 4px;
@@ -57,5 +56,9 @@
 }
 
 .margins {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 5px;
+    text-align: center;
 }

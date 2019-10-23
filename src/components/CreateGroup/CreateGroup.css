@@ -1,16 +1,46 @@
-/* .createGroupBtn {
-  background-color: #00acb0;
+.createGroupBtn {
+  display: flex;
+  justify-content: center;
+  background-color: #F9525A;
   border-radius: 4px;
   color: #f8f8f8;
-  height: 40px;
-  margin-top: 20px;
-  margin-left: 5px;
-  width: 130px;
+  min-height: 30px;
+  width: 170px;
   outline:0;
   cursor: pointer;
-  text-align: center;
+  margin: 5px;
   text-decoration: none;
-  font-size: 14px;
+    padding: 5px;
+    border-bottom:1px solid #444; 
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.group-buttons {
+	display: flex;
+	justify-content: center;
+	margin-top: 3%;
+}
+
+.createGroupBtn:hover {
+  background-color: rgb(205, 50, 58);
+  text-decoration: none;
+  text-align: center;
+  color: #f8f8f8;
+}
+
+.new-group-wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	width: 70%;
+}
+
+.new-group-page {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .searchbar {
@@ -75,4 +105,4 @@
 
 .group-name {
     display: flex;
-} */
+}

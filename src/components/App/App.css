@@ -57,7 +57,7 @@ input {
 #register-btn{
     display: flex;
     align-content: flex-end;
-    margin-top: 100%;
+    margin-top: 1%;
     justify-content: center;
 }
 

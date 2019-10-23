@@ -74,18 +74,18 @@ addGroupIds = (username) => {
     render() {
 
         return (
-    <div>
-        <h1>
+    <div className="new-group-page">
+        <h1 className="header-2">
             Create New Group:
             </h1>
-            <div>
+            <div className="new-group-wrap">
+                    <div className="new-group-wrap">
         <h3>Group Name:</h3>
         <input
             id="outlined-name"
             placeholder="Enter a name"
             onChange={(event) => this.handleNameChange(event)}
             className="search-box"/>
-        </div>
         <h3>Members:</h3>
                 <ul>
                     {this.state.groupMembers.map((member) => {
@@ -99,9 +99,11 @@ addGroupIds = (username) => {
         <div>
             <AutoComplete options={this.state.searchResults} handleClick={this.addGroupMember}/>
         </div>
-        <div className="buttons">
+        </div>
+        <div className="group-buttons">
             <button className="createGroupBtn" onClick={this.createGroup}>Create Group</button><Link to="/MyGroups" className="createGroupBtn">Cancel</Link>
         </div>
+    </div>
     </div>
 )}
         };
