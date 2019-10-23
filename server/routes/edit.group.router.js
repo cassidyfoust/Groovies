@@ -52,10 +52,10 @@ router.delete('/:deleteInfo', (req, res) => {
 
 router.put('/', (req, res) => {
     let groupId = req.body.group_id
-    let newGroupName = req.body.name
+    console.log('the req.body.name is:', req.body.name)
     let queryText = ''
-    let queryValues = [newGroupName, groupId]
-    if (newGroupname !== ''){
+    let queryValues = [req.body.name, groupId]
+    if (req.body.name !== ''){
     queryText = 'UPDATE "group" SET "group_name" = $1 WHERE "id" = $2;';
     pool.query(queryText, queryValues)
         .then(() => { res.sendStatus(200); })
