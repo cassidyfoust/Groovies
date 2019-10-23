@@ -82,3 +82,19 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.random-movie-modal {
+  display: flex;
+  flex-direction: column; 
+}
+
+.random-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.random-item {
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+}

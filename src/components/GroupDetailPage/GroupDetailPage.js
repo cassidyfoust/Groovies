@@ -173,12 +173,17 @@ render() {
                 <Modal.Header closeButton>
                     <Modal.Title>You should watch</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><div>
+                <Modal.Body><div className="random-movie-modal">
                 <h3>{this.state.randomMovie.original_title}</h3>
-                    <img
+                <div className="random-wrapper">
+                        <div className="random-item"><img
                         src={this.state.randomMovieURL}
-                    />
-                    <b>Description:</b>{this.state.randomMovie.overview}</div></Modal.Body>
+                        /></div>
+                        <div className="random-item"><div><b>Description:</b></div><div>{this.state.randomMovie.overview}
+                        </div>
+                        </div>
+                    </div>
+                </div></Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.handleNewMovieClose}>
                         Close
