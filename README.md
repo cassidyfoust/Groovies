@@ -118,6 +118,8 @@ Customize this ReadMe and the code comments in this project to read less like a 
 
 ## Cass Week To-Dos:
 - Figure out why post new movie isn't working????
+- Figure out update
+- STYLE MODALS!!!!!
 
 ## Cass To-Dos for Next Weekend:
 - Clean up CSS codes

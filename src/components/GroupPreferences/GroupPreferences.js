@@ -9,7 +9,8 @@ import AddIcon from '@material-ui/icons/Add';
 import { connect } from 'react-redux';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
-import GroupMovies from '../GroupMovies/GroupMovies.js'
+import GroupMovies from '../GroupMovies/GroupMovies.js';
+import './GroupPreferences.css';
 
 const mapStateToProps = reduxState => ({
     reduxState,
@@ -28,13 +29,14 @@ const MyModal = styled(Modal)({
 })
 
 const MyCard = styled(Card)({
-    // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    // background: 'linear-gradient(175deg, #F1EDBF 20%, #FF8E53 22%)',
+    background: '#FF8E53',
     border: 0,
     borderRadius: 3,
-    // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    boxShadow: '0 2px 4px 1px #594C51',
     // color: 'white',
-    height: 32,
-    width: 90,
+    height: 40,
+    width: 120,
     paddingLeft: 7,
     paddingTop: 5,
     margin: 5,
@@ -411,13 +413,11 @@ class GroupPreferences extends Component {
         return (
             <>
                 <div>
-                    <div className="back">
-                        <Link to={`/GroupDetails/${this.props.match.params.id}`} className="backBtn">Back</Link>
-                    </div>
-                    <h1>
+                    <h1 className="header-1">
                         {this.props.reduxState.groupDetails.name}'s Preferences:
-    </h1>
-                    <p>We Like:</p>
+                        </h1>
+                    <div className="group-preference-wrapper">
+                    <h3>We Like:</h3>
                     <div className="prefs">
                         {this.props.reduxState.groupPreferences.map((genre) => {
                             if (genre.like === true) {
@@ -443,7 +443,7 @@ class GroupPreferences extends Component {
                         )}
                     {AddLikes}
                     </div>
-                    <p>We Dislike:</p>
+                    <h3>We Dislike:</h3>
                     <div className="prefs">
                         {this.props.reduxState.groupPreferences.map((genre) => {
                             if (genre.like === false) {
@@ -469,12 +469,14 @@ class GroupPreferences extends Component {
                         )}
                         {AddDislikes}
                     </div>
-                    <p>We Watched:
+                    <h3>We Watched:
                         <GroupMovies/>
-                    </p>
-                    <div>
-                        <Link to={`/AddGroupMovie/${this.props.match.params.id}`} className="addMovieBtn">Add Movie</Link>
+                    </h3>
+                    <div className="group-buttons-wrapper">
+                        <Link to={`/GroupDetails/${this.props.match.params.id}`} className="group-prefs-buttons">Back</Link>
+                        <Link to={`/AddGroupMovie/${this.props.match.params.id}`} className="group-prefs-buttons">Add Movie</Link>
                     </div>
+                </div>
                 </div>
                 <MyModal
                     aria-labelledby="transition-modal-title"
