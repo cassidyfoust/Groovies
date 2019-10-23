@@ -402,7 +402,7 @@ class AddGroupMovie extends Component {
                 <h3>What did you like about this film?</h3>
                 <div className="genreUpdate"><b>Add Genre(s):</b>
                     <div><br></br></div>
-                    <div className="select-wrapper">
+                    <div>
                         <select className="select-css" onChange={(event) => this.handleGenreLikeChange(event)}>
                             <option>
                                 None
@@ -483,7 +483,7 @@ class AddGroupMovie extends Component {
                 <h3>What did you dislike about this film?</h3>
                 <div className="genreUpdate"><b>Add Genre(s):</b>
                     <div><br></br></div>
-                    <div className="select-wrapper">
+                    <div>
                         <select className="select-css" onChange={(event) => this.handleGenreDislikeChange(event)}>
                             <option>
                                 None

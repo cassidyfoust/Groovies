@@ -42,19 +42,6 @@
     padding-left: 30px;
 }
 
-.select-wrapper {
-	position: relative;	
-}
-
-.select-wrapper:after {
-  	content: '↓';
-  	position: absolute;
-  	top: 30%;
-  	right: 87%;
-  	color: #434B67;
-  	pointer-events: none;
-}
-
 .select-css {
 	display: block;
 	font-size: 16px;

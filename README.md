@@ -119,11 +119,9 @@ Customize this ReadMe and the code comments in this project to read less like a 
 ## Cass Week To-Dos:
 - Figure out why post new movie isn't working????
 - style select dropdowns
-- style random movie generator buttons
 
 ## Cass To-Dos for Next Weekend:
-- Clean up CSS codes
-- Styling - Thursday/Friday
+- update ReadMe
 - upload user photos
 - update group likes and dislikes when user adds likes or dislikes (post)
 - add failsafe where user cannot delete themselves from a group AND cannot add member who is already in the group

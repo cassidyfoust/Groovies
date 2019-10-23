@@ -51,18 +51,6 @@
     padding-left: 30px;
 }
 
-.select-wrapper {
-	position: relative;	
-}
-
-.select-wrapper:after {
-  	content: '↓';
-  	position: absolute;
-  	top: 18px;
-  	right: 190px;
-  	color: #434B67;
-  	pointer-events: none;
-}
 
 .select-css {
 	display: block;
