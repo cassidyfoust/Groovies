@@ -71,3 +71,14 @@
   display: flex;
   padding: 3px;
 }
+
+.rewatch-item {
+  display: flex;
+  justify-content: center;
+}
+
+.rewatch-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -8,7 +8,6 @@ function* createGroup(action) {
         const valueToSend = response2.data[0]
         let memberIds = action.payload.memberIds
         let infoToSend = {group_id: valueToSend.id, members: memberIds}
-        console.log('the infoToSend is:', infoToSend)
         yield put({type: 'ADD_GROUP_MEMBERS', payload: infoToSend})
     } catch (error) {
         console.log('error while creating group:', error)

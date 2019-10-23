@@ -19,11 +19,9 @@ router.get('/:id', (req, res) => {
     });
 
 router.delete('/:deleteInfo', (req, res) => {
-    console.log(req.params.deleteInfo)
     let queryText = ''
     let queryValues = req.params.deleteInfo.split('-')
     queryText = 'DELETE from "user_genres" where "user_id" = $1 and "genre_id" = $2;';
-    console.log(queryText, queryValues)
     pool.query(queryText, queryValues)
         .then(() => { res.sendStatus(200); })
         .catch((err) => {

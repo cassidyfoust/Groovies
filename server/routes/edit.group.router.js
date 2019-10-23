@@ -20,7 +20,6 @@ router.post('/', (req, res) => {
         let queryText = ''
         let queryValues = [member, groupId]
         queryText = `INSERT INTO "user_group" ("user_id", "group_id") VALUES ($1, $2);`;
-        console.log(queryText, queryValues)
         pool.query(queryText, queryValues)
             .then(() => { })
             .catch((err) => {
@@ -33,11 +32,9 @@ router.post('/', (req, res) => {
 // delete users from group
 
 router.delete('/:deleteInfo', (req, res) => {
-    console.log('the delete info is:', req.params.deleteInfo)
     let queryText = ''
     let queryValues = req.params.deleteInfo.split('-')
     queryText = 'DELETE from "user_group" where "group_id" = $1 and "user_id" = $2;';
-    console.log('delete user query:', queryText, queryValues)
     if (queryValues[1] !== ''){
     pool.query(queryText, queryValues)
         .then(() => { res.sendStatus(200); })
@@ -52,7 +49,6 @@ router.delete('/:deleteInfo', (req, res) => {
 
 router.put('/', (req, res) => {
     let groupId = req.body.group_id
-    console.log('the req.body.name is:', req.body.name)
     let queryText = ''
     let queryValues = [req.body.name, groupId]
     if (req.body.name !== ''){

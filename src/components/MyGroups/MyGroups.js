@@ -40,7 +40,6 @@ class MyGroupsPage extends Component{
     }
 
     handleClick = (groupId) => {
-        console.log("list item clicked", groupId);
         this.props.history.push({pathname: `/GroupDetails/${groupId}`})
     }
 

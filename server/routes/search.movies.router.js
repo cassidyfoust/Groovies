@@ -14,7 +14,6 @@ router.get('/:search', (req, res) => {
         url: endpoint
     })
         .then((response) => {
-            console.log('the response is:', response.data)
             res.send(response.data)
         })
         .catch(error => {

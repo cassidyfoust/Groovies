@@ -22,10 +22,8 @@ router.get('/:id', (req, res) => {
  * POST route template
  */
     router.post('/', (req, res) => {
-        console.log(req.body)
         let queryText = ''
         let queryValues = req.body
-        console.log('the query is:', queryValues)
         queryText = `INSERT INTO "group" ("id", "group_name", "admin") VALUES (DEFAULT, $1, $2)`;
         pool.query(queryText, queryValues)
             .then(() => { res.sendStatus(200); })

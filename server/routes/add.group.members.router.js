@@ -19,7 +19,6 @@ router.post('/', (req, res) => {
     let queryText = ''
     let queryValues = [member, groupId]
     queryText = `INSERT INTO "user_group" ("user_id", "group_id") VALUES ($1, $2);`;
-    console.log(queryText, queryValues)
     pool.query(queryText, queryValues)
         .then(() => { })
         .catch((err) => {

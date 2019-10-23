@@ -53,7 +53,6 @@ class GroupDetailPage extends Component {
                         searchResultsWithId: [...this.state.searchResultsWithId,
                             person]
                     })
-                    console.log('in getInfo:', this.state.searchResults)
                 })
             })
     }

@@ -1,28 +1,15 @@
 import React, {Component} from 'react';
 import './GroupDetailPage.css';
-import { Link } from 'react-router-dom';
 import '../CreateGroup/CreateGroup'
 import GroupMemberPic from './testprofpic.png';
 import { connect } from 'react-redux';
 import swal from 'sweetalert';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
 import { styled } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import { flexbox } from '@material-ui/system';
 import axios from 'axios';
-
-const MyModal = styled(Modal)({
-    position: 'relative',
-    width: "300px",
-    height: "500px",
-    marginLeft: "30%",
-    marginTop: "10%",
-    padding: 50,
-    backgroundColor: '#ffffff',
-    color: '#000000',
-    border: '1px solid #000'
-})
+import { Modal } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 const MyCard = styled(Card)({
     // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -61,13 +48,11 @@ class GroupDetailPage extends Component {
             ...this.state,
             suggestNewMovieOpen: true
         })
-        console.log('the random genre is:', this.props.reduxState.groupPreferences[randomGenreNumber].tmdb)
         axios({
             method: 'GET',
             url: `/api/random_movie/${this.props.reduxState.groupPreferences[randomGenreNumber].tmdb}`
         })
             .then((response) => {
-                console.log('the response is:', response)
                 this.setState({
                     ...this.state,
                     randomMovie: response.data,
@@ -184,37 +169,38 @@ render() {
                     <button className="groupBtns" onClick={this.leaveGroup}>Leave Group</button>
             </div>
         </div>
-        <MyModal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            open={this.state.suggestNewMovieOpen}
-            onClose={this.handleNewMovieClose}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-                timeout: 500,
-            }}
-            ><div>You should watch
+            <Modal show={this.state.suggestNewMovieOpen} onHide={this.handleNewMovieClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>You should watch</Modal.Title>
+                </Modal.Header>
+                <Modal.Body><div>
                 <h3>{this.state.randomMovie.original_title}</h3>
                     <img
                         src={this.state.randomMovieURL}
                     />
-                    <b>Description:</b>{this.state.randomMovie.overview}</div>
-                    </MyModal>
-        <MyModal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            open={this.state.suggestRewatchOpen}
-            onClose={this.handleRewatchClose}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-                timeout: 500,
-            }}
-            ><div>You should rewatch <h3>{this.state.rewatchMovie.title}</h3>
+                    <b>Description:</b>{this.state.randomMovie.overview}</div></Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={this.handleNewMovieClose}>
+                        Close
+          </Button>
+                </Modal.Footer>
+            </Modal>
+            <Modal show={this.state.suggestRewatchOpen} onHide={this.handleRewatchClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>You should rewatch </Modal.Title>
+                </Modal.Header>
+                <Modal.Body><div className="rewatch-modal"><div className="rewatch-item"><h3>{this.state.rewatchMovie.title}</h3></div>
+                    <div className="rewatch-item">
                     <img
                         src={this.state.rewatchMovie.URL}
-                    /></div></MyModal>
+                    /></div>
+                </div></Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={this.handleRewatchClose}>
+                        Close
+          </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     
 )}
