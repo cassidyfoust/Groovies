@@ -11,17 +11,16 @@ import Card from '@material-ui/core/Card';
 import { flexbox } from '@material-ui/system';
 
 const MyCard = styled(Card)({
-    // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    background: '#F1EDBF',
     border: 0,
     borderRadius: 3,
     // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     // // color: 'white',
     // height: 60,
-    width: 220,
-    paddingLeft: 7,
-    paddingTop: 5,
+    width: 218,
+    padding: 10,
     margin: 5,
-    fontSize: 12,
+    fontSize: 16,
     display: flexbox,
     textAlign: "center"
 });
@@ -379,7 +378,7 @@ class AddGroupMovie extends Component {
         let movieDetails;
 
         if (this.state.showSuggestions) {
-            suggestions = <><h4>Did you mean:</h4><div className="search-results">
+            suggestions = <><h4 className="header-4">Did you mean:</h4><div className="search-results">
                 {this.state.searchResults.map((result) => {
                     let imgURL = `https://image.tmdb.org/t/p/w200/${result.poster_path}`
                     return (
@@ -391,9 +390,15 @@ class AddGroupMovie extends Component {
 
         if (this.state.showMovieDetails) {
             let imgURL = `https://image.tmdb.org/t/p/w200/${this.state.movieToAdd.poster_path}`
-            movieDetails = <> <h3>{this.state.movieToAdd.original_title}</h3>
-                <img src={imgURL}></img>
-                <p><b>Description:</b> {this.state.movieToAdd.overview}</p>
+            movieDetails = <><div className="add-movie-details">
+                <div className="movie-info">
+                    <div><img src={imgURL}></img></div>
+                    <div className="movie-details">
+                    <h3>{this.state.movieToAdd.original_title}</h3>
+                    <p><b>Description:</b> {this.state.movieToAdd.overview}</p>
+                    </div>
+                    </div>
+                <div className="genre-wrapper">
                 <h3>What did you like about this film?</h3>
                 <div className="genreUpdate"><b>Add Genre(s):</b>
                     <div><br></br></div>
@@ -555,11 +560,14 @@ class AddGroupMovie extends Component {
                             })}
                         </ul>
                     </div>
-                </div></>
+                </div>
+                </div>
+            </div>
+            </>
         }
         return (
             <div>
-                <h1>
+                <h1 className="header-2">
                     Add Movie:
             </h1>
                 <div className="searchbar">
@@ -575,8 +583,10 @@ class AddGroupMovie extends Component {
                 </div>
                 <h4>{suggestions}</h4>
                 {movieDetails}
-                <div className="buttons">
+                <div className="movie-buttons">
+                    <div className="button-wrapper">
                     <button className="addMovieBtn" onClick={(event) => this.addMovie()}>Add Movie</button><Link to={`/GroupPreferences/${this.props.match.params.id}`} className="addMovieBtn">Cancel</Link>
+                </div>
                 </div>
             </div>
         )
