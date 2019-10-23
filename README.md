@@ -12,63 +12,39 @@ Groovies is a social site which recommends new movies to groups of users based o
 - Material UI
 - Bootstrap UI
 
-## Getting Started
-
-- npm install
-- npm run server
-- npm run client
-
 ### Prerequisites
 
-Link to software that is required before you attempt to start the app (e.g. node, mongo).
-
 - [Node.js](https://nodejs.org/en/)
-- List other prerequisites here
-
 
 ### Installing
 
 Steps to get the development environment running.
 
 1. Download this project.
+2. Spin up a database called "prime_app" using database.sql queries
 2. `npm install`
-3. `npm start`
-
-And so on...
-
-## Screen Shot
-
-Include one or two screen shots of your project here (optional). Remove if unused.
-
-## Documentation
-
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
+3. `npm run server`
+4. `npm run client`
+5. You're good to go!
 
 ### Completed Features
 
 High level list of items completed.
 
-- [x] Feature a
-- [x] Feature b
+- [x] Users can upload personal likes and dislikes
+- [x] Users can add movies they've watched
+- [x] Users can create groups of friends (searchable by username)
+- [x] Group admins can update group preferences without altering individual users' preferences
+- [x] Group admins can edit the group (including name and members)
+- [x] Users can get new movie and rewatch suggestions randomly generated based on preferences
 
 ### Next Steps
 
 Features that you would like to add at some point in the future.
 
-- [ ] Feature c
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Authors
-
-* Name of author(s)
-
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
+- [ ] Users can add movie preferences for actors and directors in addition to genres
+- [ ] Suggested movies exclude all group dislikes
+- [ ] The admin of a group can delete a group
 
 ## Deployment
 
@@ -79,6 +55,10 @@ Add additional notes about how to deploy this on a live system
 1. Create the necessary tables
 1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
 1. In the deploy section, select manual deploy
+
+## Authors
+
+* Cassidy Foust
 
 ## Color Scheme:
 
