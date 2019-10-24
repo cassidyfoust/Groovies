@@ -6,6 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/:title', (req, res) => {
+    console.log('in the get route:', req.params.title)
     let queryText = ''
     let queryValues = req.params.title.split('+').join(' ')
     queryText = `SELECT "id" FROM "movies" WHERE "title" LIKE '%' || $1 || '%';`;

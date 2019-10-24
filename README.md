@@ -29,8 +29,6 @@ Steps to get the development environment running.
 
 ### Completed Features
 
-High level list of items completed.
-
 - [x] Users can upload personal likes and dislikes
 - [x] Users can add movies they've watched
 - [x] Users can create groups of friends (searchable by username)
@@ -40,8 +38,7 @@ High level list of items completed.
 
 ### Next Steps
 
-Features that you would like to add at some point in the future.
-
+- [ ] Users can upload a profile picture
 - [ ] Users can add movie preferences for actors and directors in addition to genres
 - [ ] Suggested movies exclude all group dislikes
 - [ ] The admin of a group can delete a group

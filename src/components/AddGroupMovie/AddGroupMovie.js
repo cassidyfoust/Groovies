@@ -352,11 +352,11 @@ class AddGroupMovie extends Component {
             movieToAdd: result
         })
         console.log('the movie to add is:', result)
+        this.props.dispatch({ type: 'ADD_GROUP_MOVIE', payload: { movieToAdd: result, group_id: this.props.match.params.id } })
     }
 
     addMovie = () => {
-        console.log('Adding the following information:', this.state)
-        this.props.dispatch({ type: 'ADD_GROUP_MOVIE', payload: { movieToAdd: this.state.movieToAdd, group_id: this.props.match.params.id } })
+        this.props.dispatch({ type: 'FETCH_GROUP_MOVIE_ID', payload: { queryText: this.state.movieToAdd.original_title, group_id: this.props.match.params.id } })
         if (this.state.genreLikes !== [] && this.state.genreDislikes !== []) {
             this.props.dispatch({ type: 'ADD_GROUP_LIKES', payload: { group_id: this.props.match.params.id, genre_id: this.state.genreLikes } });
             this.props.dispatch({ type: 'ADD_GROUP_DISLIKES', payload: { group_id: this.props.match.params.id, genre_id: this.state.genreDislikes } });
