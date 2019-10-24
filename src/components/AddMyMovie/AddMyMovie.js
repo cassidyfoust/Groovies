@@ -352,12 +352,11 @@ class AddMyMovie extends Component {
             showMovieDetails: true,
             movieToAdd: result
         })
-        console.log('the movie to add is:', result)
+        this.props.dispatch({ type: 'ADD_USER_MOVIE', payload: { movieToAdd: result, user_id: this.props.reduxState.user.id} })
     }
 
     addMovie = () => {
-        console.log('Adding the following information:', this.state)
-        this.props.dispatch({ type: 'ADD_USER_MOVIE', payload: { movieToAdd: this.state.movieToAdd, user_id: this.props.reduxState.user.id}})
+        this.props.dispatch({ type: 'FETCH_MOVIE_ID', payload: { queryText: this.state.movieToAdd.original_title, user_id: this.props.reduxState.user.id} })
         if (this.state.genreLikes !== [] && this.state.genreDislikes !== []){
         this.props.dispatch({ type: 'ADD_USER_LIKES', payload: { user_id: this.props.reduxState.user.id, genre_id: this.state.genreLikes } });
         this.props.dispatch({ type: 'ADD_USER_DISLIKES', payload: { user_id: this.props.reduxState.user.id, genre_id: this.state.genreDislikes } });
