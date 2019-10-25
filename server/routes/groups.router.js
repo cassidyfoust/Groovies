@@ -1,11 +1,13 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 
 /**
- * GET route template
+ * GET route
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT "group_name", "group".id, "group".admin FROM "user"
         JOIN "user_group" ON "user".id = "user_group".user_id
         JOIN "group" ON "group".id = "user_group".group_id
@@ -19,9 +21,9 @@ router.get('/:id', (req, res) => {
 });
 
 /**
- * POST route template
+ * POST route to add new group
  */
-    router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
         let queryText = ''
         let queryValues = req.body
         queryText = `INSERT INTO "group" ("id", "group_name", "admin") VALUES (DEFAULT, $1, $2)`;

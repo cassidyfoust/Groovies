@@ -1,18 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-
-/**
- * GET route template
- */
-router.get('/', (req, res) => {
-
-});
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 /**
  * POST new users to database ("user_groups")
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     if (req.body.members !== undefined){
     let groupId = req.body.group_id
     let members = req.body.members
@@ -31,7 +25,7 @@ router.post('/', (req, res) => {
 
 // delete users from group
 
-router.delete('/:deleteInfo', (req, res) => {
+router.delete('/:deleteInfo', rejectUnauthenticated, (req, res) => {
     let queryText = ''
     let queryValues = req.params.deleteInfo.split('-')
     queryText = 'DELETE from "user_group" where "group_id" = $1 and "user_id" = $2;';
@@ -47,7 +41,7 @@ router.delete('/:deleteInfo', (req, res) => {
 
 // update group name
 
-router.put('/', (req, res) => {
+router.put('/', rejectUnauthenticated, (req, res) => {
     let groupId = req.body.group_id
     let queryText = ''
     let queryValues = [req.body.name, groupId]

@@ -1,8 +1,11 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-router.get('/:id', (req, res) => {
+// GET route for group members at group id
+
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     let queryText = `SELECT "username" from "user"
     JOIN "user_group" ON "user".id = "user_group".user_id
     JOIN "group" ON "group".id = "user_group".group_id

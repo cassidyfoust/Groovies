@@ -1,11 +1,13 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 
 /**
- * GET route template
+ * GET route
  */
-router.get('/:title', (req, res) => {
+router.get('/:title', rejectUnauthenticated, (req, res) => {
     let queryText = ''
     let queryValues = req.params.title.split('+').join(' ')
     queryText = `SELECT "id" FROM "movies" WHERE "title" LIKE '%' || $1 || '%';`;
@@ -19,7 +21,7 @@ router.get('/:title', (req, res) => {
 /**
  * POST new movie to "movies" table in database
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
         let queryText = ''
         let queryValues = [req.body.original_title, req.body.overview, req.body.poster_path]
         queryText = `INSERT INTO "movies" ("title", "description", "poster_path") VALUES ($1, $2, $3);`;

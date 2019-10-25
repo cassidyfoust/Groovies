@@ -1,11 +1,13 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 
 /**
- * GET route template
+ * GET route
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     let queryText = ''
     let queryValues = [req.params.id]
     queryText = `SELECT "title", "poster_path" FROM "user_movies"
@@ -26,7 +28,7 @@ router.get('/:id', (req, res) => {
 /**
  * POST new movie to "movies" table in database
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     let queryText = ''
     let queryValues = [req.body.user_id, req.body.movie_id]
     queryText = `INSERT INTO "user_movies" ("user_id", "movie_id") VALUES ($1, $2);`;

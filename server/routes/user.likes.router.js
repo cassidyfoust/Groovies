@@ -1,18 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-
-/**
- * GET route template
- */
-router.get('/', (req, res) => {
-
-});
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 /**
  * POST user likes to database ("user_genres")
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     req.body.genre_id.forEach(genre => {
     let queryText = ''
     let queryValues = [req.body.user_id, genre]

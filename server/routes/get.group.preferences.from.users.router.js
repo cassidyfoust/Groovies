@@ -1,11 +1,13 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 
 /**
- * GET route template
+ * GET route
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT DISTINCT "genres".genre_name, "genres".id, "genres".tmdb, "user".username, "user_genres".like FROM "user"
 JOIN "user_genres" ON "user".id = "user_genres".user_id
 JOIN "genres" ON "genres".id = "user_genres".genre_id
@@ -21,9 +23,9 @@ WHERE "group".id=$1;`
 });
 
 /**
- * POST route template
+ * POST route
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     for (let i=0; i<req.body.userGenres.length; i++){
     let queryText = ''
     let queryValues = [req.body.id, req.body.userGenres[i].id, req.body.userGenres[i].like]

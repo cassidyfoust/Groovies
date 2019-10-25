@@ -1,18 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 /**
- * GET route template
+ * POST new users to "user_group" table
  */
-router.get('/', (req, res) => {
-
-});
-
-/**
- * POST user likes to database ("user_genres")
- */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     let groupId = req.body.group_id
     let members = req.body.members
     members.forEach(member => {

@@ -1,11 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const router = express.Router();
 
 /**
- * GET route template
+ * GET route
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT DISTINCT "genre_name", "username", "like", "genre_id" FROM "user"
     JOIN "user_genres" ON "user".id = "user_genres".user_id
     JOIN "genres" ON "genres".id = "user_genres".genre_id
@@ -18,7 +19,7 @@ router.get('/:id', (req, res) => {
             });
     });
 
-router.delete('/:deleteInfo', (req, res) => {
+router.delete('/:deleteInfo', rejectUnauthenticated,(req, res) => {
     let queryText = ''
     let queryValues = req.params.deleteInfo.split('-')
     queryText = 'DELETE from "user_genres" where "user_id" = $1 and "genre_id" = $2;';
@@ -28,13 +29,6 @@ router.delete('/:deleteInfo', (req, res) => {
             console.log('Error completing DELETE movie genre query', err);
             res.sendStatus(500);
         });
-});
-
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-
 });
 
 module.exports = router;

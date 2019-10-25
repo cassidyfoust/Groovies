@@ -1,11 +1,13 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 
 /**
- * GET route template
+ * GET group details route
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT "group_name", "group".id, "user".username, "group".admin FROM "user"
         JOIN "user_group" ON "user".id = "user_group".user_id
         JOIN "group" ON "group".id = "user_group".group_id
@@ -16,13 +18,6 @@ router.get('/:id', (req, res) => {
             console.log('Error completing USER GROUPS query', err);
             res.sendStatus(500);
         });
-});
-
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-
 });
 
 module.exports = router;
